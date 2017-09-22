@@ -1,0 +1,2 @@
+Successfully initalized
+Quit called!

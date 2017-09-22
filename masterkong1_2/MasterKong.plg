@@ -1,0 +1,71 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MasterKong - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/Script1.res" /d "NDEBUG" "C:\Temp\mk11\Script1.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP5372.TMP" with contents
+[
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/MasterKong.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Temp\mk11\about.cpp"
+"C:\Temp\mk11\game.cpp"
+"C:\Temp\mk11\gameover.cpp"
+"C:\Temp\mk11\gintro.cpp"
+"C:\Temp\mk11\grandma.cpp"
+"C:\Temp\mk11\hero.cpp"
+"C:\Temp\mk11\intro.cpp"
+"C:\Temp\mk11\mastermain.cpp"
+"C:\Temp\mk11\Masterx.cpp"
+"C:\Temp\mk11\options.cpp"
+"C:\Temp\mk11\ParticleHandler.cpp"
+"C:\Temp\mk11\soundhandle.cpp"
+"C:\Temp\mk11\start.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP5372.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP5373.TMP" with contents
+[
+dxguid.lib ddraw.lib dsound.lib dinput.lib wsock32.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/MasterKong.pdb" /machine:I386 /out:"Release/MasterKong.exe" 
+.\Release\about.obj
+.\Release\game.obj
+.\Release\gameover.obj
+.\Release\gintro.obj
+.\Release\grandma.obj
+.\Release\hero.obj
+.\Release\intro.obj
+.\Release\mastermain.obj
+.\Release\Masterx.obj
+.\Release\options.obj
+.\Release\ParticleHandler.obj
+.\Release\soundhandle.obj
+.\Release\start.obj
+.\Release\Script1.res
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP5373.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+about.cpp
+game.cpp
+gameover.cpp
+gintro.cpp
+grandma.cpp
+hero.cpp
+intro.cpp
+mastermain.cpp
+Masterx.cpp
+options.cpp
+ParticleHandler.cpp
+soundhandle.cpp
+start.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+MasterKong.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

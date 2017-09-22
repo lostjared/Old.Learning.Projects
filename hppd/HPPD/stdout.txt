@@ -1,0 +1,5 @@
+SDL Surface Created 1624eb8
+Successfully initalized
+Joystick not found...
+13Released..
+27532323232323232323232273273273273273273273273273273274274274Quit called!

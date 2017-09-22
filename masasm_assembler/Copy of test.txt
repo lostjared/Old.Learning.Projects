@@ -1,0 +1,65 @@
+
+; this is a comment
+; hello world in mas asm
+
+; inherit already written and compiled scripts
+; only allowed to make references to its procedures, and varaibles
+; and they are stored in the same variable table
+; only with the objects name and . after them
+; the only objects in the table without the . are the currentone
+
+
+mas object Jared  {
+
+inherts {
+
+Jared <c:\windows\jared.mve>
+Jason <c:\jason\john\john.mve>
+Robert <c:\joe\bob\ron.mve>
+
+}
+
+
+variables {
+
+var& x(100)
+var& y ; unsigned long integer, using hex size ( FFFF FFFF FFFF FFFF FFFF FFFF FFFF )
+var$ k ; double float variable 0xFF 
+var$ string ; string 
+udt name [$x,$y,&z](100)
+
+
+
+}
+
+constructor {
+
+call jason.moveleft
+mov jason.x,100
+
+
+mprintln "goodbye"
+mprint " "
+mprintln " hello world in my language "
+mprintln " H e L OZ "
+mprint "z"
+mprint "a"
+mprint " HHHHHHHHHHHHHHHHHHHHHH ellOW WorLD"
+mprintln "
+
+game over "
+
+mov x,100
+mprint x
+
+
+}
+
+
+deconstructor {
+
+}
+
+
+}
+

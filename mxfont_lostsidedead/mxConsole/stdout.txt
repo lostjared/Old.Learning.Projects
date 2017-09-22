@@ -1,0 +1,7 @@
+SDL Surface Created b14740
+Successfully initalized
+token passed echo
+token passed HELLO WORLD
+token passed echo
+token passed HELLO WORLD
+Quit called!

@@ -1,0 +1,2 @@
+echo hey now your text color is going to be white :)
+settextcolor white

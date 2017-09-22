@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SuperMaster", "SuperMaster.vcproj", "{6AA39386-108A-4690-A825-85503CFC76CF}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{6AA39386-108A-4690-A825-85503CFC76CF}.Debug.ActiveCfg = Debug|Win32
+		{6AA39386-108A-4690-A825-85503CFC76CF}.Debug.Build.0 = Debug|Win32
+		{6AA39386-108A-4690-A825-85503CFC76CF}.Release.ActiveCfg = Release|Win32
+		{6AA39386-108A-4690-A825-85503CFC76CF}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,110 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON    DISCARDABLE     "icon1.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP  DISCARDABLE     "brick.bmp"
+IDB_BITMAP2             BITMAP  DISCARDABLE     "grass.bmp"
+IDB_BITMAP3             BITMAP  DISCARDABLE     "bluebrick.bmp"
+IDB_BITMAP4             BITMAP  DISCARDABLE     "bluesky.bmp"
+IDB_BITMAP5             BITMAP  DISCARDABLE     "eblock.bmp"
+IDB_BITMAP6             BITMAP  DISCARDABLE     "black.bmp"
+IDB_BITMAP7             BITMAP  DISCARDABLE     "bitmap7.bmp"
+IDB_BITMAP8             BITMAP  DISCARDABLE     "bitmap8.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "File"
+    BEGIN
+        MENUITEM "Create a New Level",          ID_FILENEW
+        MENUITEM SEPARATOR
+        MENUITEM "Load a Exisitng Level",       ID_FILELOAD
+        MENUITEM "Save Level",                  ID_FILESAVE
+        MENUITEM "Save Level As",               ID_FILESAVEAS
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_FILEEXIT
+    END
+    POPUP "Help"
+    BEGIN
+        MENUITEM "About..",                     ID_ABOUT
+    END
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

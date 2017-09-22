@@ -1,0 +1,77 @@
+// MasC script to create a simple window
+
+insert "console.msrc";
+insert "windows.msrc";
+
+
+master MyWindow {
+var {
+	var& app_over = 0;
+	var$ key_pressed = "";
+	var$ mouse_clicked = "";
+}
+
+uses {window;}
+begin {
+print << "Initalizing Window...\n";
+scat master.key_pressed << " Waiting for key... ";
+scat window.cls_name << "Win_Cls";
+scat window.win_title << "Press any Key";
+mov window.win_x,0;
+mov window.win_y,0;
+mov window.win_w,640;
+mov window.win_h,480;
+call window.create;
+win_loop:
+call window.loop; 
+cmp master.app_over,0;
+jne win_loop;
+}
+end {
+print << "Destroying Window...";
+push "Goodbye!";
+push "Bye Bye!";
+call window.msgbox;
+}
+proc key_press {
+scat master.key_pressed << "You pressed the " << window.key << " Key!";
+print << master.key_pressed << "\n";
+push master.key_pressed;
+push "Y0";
+call window.redraw;
+call window.msgbox;
+cmp window.key,27;
+je yep;
+ret;
+yep:
+mov master.app_over,0;
+push "You pressed Escape Were outta here..";
+push "Laterz";
+call window.msgbox;
+}
+
+proc paint {
+push 0;
+push 0;
+push master.key_pressed;
+call window.drawtext;
+}
+
+proc mousedown {
+scat master.mouse_clicked << "Mouse Clicked at Position (" << window.mouse_x << " : " << window.mouse_y << ")";
+print << master.mouse_clicked << "\n";
+push "You clicked the mouse!";
+push "Y0 y0 yo hommie Y()";
+call window.msgbox;
+}
+
+proc mouseup {
+
+}
+
+proc mousemove {
+scat master.mouse_clicked << "Mouse moved to Position (" << window.mouse_x << " : " << window.mouse_y << ")";
+print << master.mouse_clicked << "\n";
+}
+
+}

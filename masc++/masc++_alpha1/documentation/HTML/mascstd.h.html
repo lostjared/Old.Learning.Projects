@@ -1,0 +1,363 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>mascstd.h</title>
+<meta name="generator" content="C++2HTML by Jasper Bedaux" />
+<!-- To generate your own colored code visit http://www.bedaux.net/cpp2html/ -->
+<style type="text/css">
+.comment { color: #999999; font-style: italic; }
+.pre { color: #000099; }
+.string { color: #009900; }
+.char { color: #009900; }
+.float { color: #996600; }
+.int { color: #999900; }
+.bool { color: #000000; font-weight: bold; }
+.type { color: #FF6633; }
+.flow { color: #FF0000; }
+.keyword { color: #990000; }
+.operator { color: #663300; font-weight: bold; }
+</style>
+</head>
+<body>
+<pre><span class="pre">#ifndef _MASC_STD_H__
+#define _MASC_STD_H__
+
+#include "masc.h"
+#include&lt;sstream&gt;
+</span><span class="keyword">
+namespace</span> mascstd<span class="operator"> {</span><span class="keyword">
+
+	static</span> masc<span class="operator">::</span>BackEnd<span class="operator"> *</span>back<span class="operator">;</span><span class="type">
+
+	int</span> file_read<span class="operator">(</span>masc<span class="operator">::</span>Symbol_Table<span class="operator"> &amp;</span>t<span class="operator">) {</span>
+
+		std<span class="operator">::</span>fstream fin<span class="operator">;</span>
+		fin<span class="operator">.</span>open<span class="operator">(</span>t<span class="operator">.</span>Get<span class="operator">(</span><span class="string">"file.file_name"</span><span class="operator">).</span>val<span class="operator">.</span>c_str<span class="operator">(),</span>std<span class="operator">::</span>ios<span class="operator">::</span>in<span class="operator">);</span>
+
+		t<span class="operator">[</span><span class="string">"file.buffer"</span><span class="operator">].</span>val<span class="operator"> =</span><span class="string"> ""</span><span class="operator">;</span><span class="flow">
+		while</span><span class="operator">(</span>fin<span class="operator">.</span>is_open<span class="operator">() &amp;&amp; !</span>fin<span class="operator">.</span>eof<span class="operator">()) {</span>
+
+			std<span class="operator">::</span>string line<span class="operator">;</span>
+			std<span class="operator">::</span>getline<span class="operator">(</span>fin<span class="operator">,</span>line<span class="operator">);</span>
+			t<span class="operator">[</span><span class="string">"file.buffer"</span><span class="operator">].</span>val<span class="operator"> +=</span> line<span class="operator"> +</span><span class="string"> "\n"</span><span class="operator">;
+		}</span>
+
+		fin<span class="operator">.</span>close<span class="operator">();</span><span class="flow">
+		return</span><span class="int"> 0</span><span class="operator">;
+	}</span><span class="type">
+
+	int</span> file_write<span class="operator">(</span>masc<span class="operator">::</span>Symbol_Table<span class="operator"> &amp;</span>t<span class="operator">) {</span>
+
+		std<span class="operator">::</span>fstream<span class="operator"> *</span>fout<span class="operator"> =</span><span class="keyword"> new</span> std<span class="operator">::</span>fstream<span class="operator">;</span>
+
+		fout<span class="operator">-&gt;</span>open<span class="operator">(</span>t<span class="operator">[</span><span class="string">"file.file_name"</span><span class="operator">].</span>val<span class="operator">.</span>c_str<span class="operator">(),</span>std<span class="operator">::</span>ios<span class="operator">::</span>out<span class="operator">);</span><span class="flow">
+
+		if</span><span class="operator">(</span>fout<span class="operator">-&gt;</span>is_open<span class="operator">()) {
+			*</span>fout<span class="operator"> &lt;&lt;</span> t<span class="operator">[</span><span class="string">"file.buffer"</span><span class="operator">].</span>val<span class="operator">;</span>
+
+			fout<span class="operator">-&gt;</span>close<span class="operator">();
+		}</span><span class="flow">
+		else</span>
+			std<span class="operator">::</span>cout<span class="operator"> &lt;&lt;</span><span class="string"> "**** Error file "</span><span class="operator"> &lt;&lt;</span> t<span class="operator">[</span><span class="string">"file.file_name"</span><span class="operator">].</span>val<span class="operator"> &lt;&lt;</span><span class="string"> " Could not be opened!\n"</span><span class="operator">;</span><span class="keyword">
+
+		delete</span> fout<span class="operator">;</span><span class="flow">
+		return</span><span class="int"> 0</span><span class="operator">;
+	}</span><span class="type">
+
+	int</span> file_bread<span class="operator">(</span>masc<span class="operator">::</span>Symbol_Table<span class="operator"> &amp;</span>t<span class="operator">) {</span>
+
+		std<span class="operator">::</span>fstream fin<span class="operator">;</span>
+		fin<span class="operator">.</span>open<span class="operator">(</span>t<span class="operator">.</span>Get<span class="operator">(</span><span class="string">"file.file_name"</span><span class="operator">).</span>val<span class="operator">.</span>c_str<span class="operator">(),</span>std<span class="operator">::</span>ios<span class="operator">::</span>in<span class="operator">);</span>
+
+		t<span class="operator">[</span><span class="string">"file.char"</span><span class="operator">].</span>val<span class="operator"> =</span><span class="string"> ""</span><span class="operator">;</span><span class="flow">
+		while</span><span class="operator">(</span>fin<span class="operator">.</span>is_open<span class="operator">() &amp;&amp; !</span>fin<span class="operator">.</span>eof<span class="operator">()) {</span><span class="type">
+
+			unsigned char</span> ch<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;</span>
+			fin<span class="operator">.</span>read<span class="operator">(</span><span class="keyword">reinterpret_cast</span><span class="operator">&lt;</span><span class="type">char</span><span class="operator">*&gt;(&amp;</span>ch<span class="operator">),</span><span class="keyword">sizeof</span><span class="operator">(</span>ch<span class="operator">));</span>
+
+			t<span class="operator">[</span><span class="string">"file.char"</span><span class="operator">].</span>val<span class="operator"> +=</span> ch<span class="operator">;
+		}</span>
+		std<span class="operator">::</span>cout<span class="operator"> &lt;&lt;</span> t<span class="operator">[</span><span class="string">"file.char"</span><span class="operator">].</span>val<span class="operator"> &lt;&lt;</span><span class="string"> "\n"</span><span class="operator">;</span>
+
+		fin<span class="operator">.</span>close<span class="operator">();</span><span class="flow">
+		return</span><span class="int"> 0</span><span class="operator">;
+	}</span><span class="type">
+
+	int</span> console_clear<span class="operator">(</span>masc<span class="operator">::</span>Symbol_Table<span class="operator"> &amp;</span>t<span class="operator">) {</span><span class="pre">
+
+#ifdef _WIN32
+</span>		system<span class="operator">(</span><span class="string">"CLS"</span><span class="operator">);</span><span class="pre">
+#else
+</span>		system<span class="operator">(</span><span class="string">"clear"</span><span class="operator">);</span><span class="pre">
+#endif
+</span><span class="flow">		return</span><span class="int"> 0</span><span class="operator">;
+	}</span><span class="type">
+
+	int</span> console_pause<span class="operator">(</span>masc<span class="operator">::</span>Symbol_Table<span class="operator"> &amp;</span>t<span class="operator">) {</span><span class="pre">
+#ifdef _WIN32
+</span>		system<span class="operator">(</span><span class="string">"PAUSE"</span><span class="operator">);</span><span class="pre">
+
+#else
+</span>		getchar<span class="operator">();</span><span class="pre">
+#endif
+</span><span class="flow">		return</span><span class="int"> 0</span><span class="operator">;
+	}</span><span class="type">
+
+	int</span> console_input<span class="operator">(</span>masc<span class="operator">::</span>Symbol_Table<span class="operator"> &amp;</span>t<span class="operator">) {</span><span class="pre">
+
+#ifndef MASC_APACHE
+</span>		std<span class="operator">::</span>getline<span class="operator">(</span>std<span class="operator">::</span>cin<span class="operator">,</span> t<span class="operator">[</span><span class="string">"console.buffer"</span><span class="operator">].</span>val<span class="operator">);</span><span class="pre">
+
+#endif
+</span><span class="flow">		return</span><span class="int"> 0</span><span class="operator">;
+	}</span><span class="type">
+
+
+	int</span> console_output<span class="operator">(</span>masc<span class="operator">::</span>Symbol_Table<span class="operator"> &amp;</span>t<span class="operator">) {</span>
+
+		std<span class="operator">::</span>cout<span class="operator"> &lt;&lt;</span> t<span class="operator">[</span><span class="string">"console.buffer"</span><span class="operator">].</span>val<span class="operator">;</span><span class="flow">
+		return</span><span class="int"> 0</span><span class="operator">;
+	}</span><span class="type">
+
+	int</span> console_flush<span class="operator">(</span>masc<span class="operator">::</span>Symbol_Table<span class="operator"> &amp;</span>t<span class="operator">) {</span>
+		t<span class="operator">[</span><span class="string">"console.buffer"</span><span class="operator">].</span>val<span class="operator"> =</span><span class="string"> ""</span><span class="operator">;</span><span class="flow">
+
+		return</span><span class="int"> 0</span><span class="operator">;
+	}</span><span class="pre">
+
+#ifdef _WIN32
+#include&lt;windows.h&gt;
+#include&lt;memory.h&gt;
+</span>
+	HDC cdc<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;</span>
+
+	HBITMAP hbm<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;</span>
+
+	LRESULT CALLBACK WndProc<span class="operator">(</span>HWND hwnd<span class="operator">,</span>UINT msg<span class="operator">,</span>WPARAM wParam<span class="operator">,</span>LPARAM lParam<span class="operator">) {</span><span class="flow">
+
+		switch</span><span class="operator">(</span>msg<span class="operator">) {</span><span class="flow">
+			case</span> WM_DESTROY<span class="operator">:</span>
+				PostQuitMessage<span class="operator">(</span><span class="int">0</span><span class="operator">);</span><span class="flow">
+
+				break</span><span class="operator">;</span><span class="flow">
+			case</span> WM_KEYDOWN<span class="operator">:
+				{</span>
+					std<span class="operator">::</span>ostringstream s<span class="operator">;</span>
+					s<span class="operator"> &lt;&lt;</span><span class="type"> int</span><span class="operator">(</span>wParam<span class="operator">);</span>
+
+					back<span class="operator">-&gt;</span>symbols<span class="operator">.</span>Set<span class="operator">(</span>masc<span class="operator">::</span>VAR_INTEGER<span class="operator">,</span>s<span class="operator">.</span>str<span class="operator">(),</span><span class="string">"window.key"</span><span class="operator">);</span>
+
+					back<span class="operator">-&gt;</span>CallProcedure<span class="operator">(</span><span class="string">"master.key_press"</span><span class="operator">);
+				}</span><span class="flow">
+				break</span><span class="operator">;</span><span class="flow">
+			case</span> WM_MOUSEMOVE<span class="operator">:</span><span class="flow">
+
+			case</span> WM_LBUTTONDOWN<span class="operator">:</span><span class="flow">
+			case</span> WM_LBUTTONUP<span class="operator">:
+				{</span>
+					POINT p<span class="operator"> = {</span> LOWORD<span class="operator">(</span>lParam<span class="operator">),</span> HIWORD<span class="operator">(</span>lParam<span class="operator">) };</span>
+
+					std<span class="operator">::</span>ostringstream s<span class="operator">,</span>ss<span class="operator">;</span>
+					s<span class="operator"> &lt;&lt;</span><span class="type"> int</span><span class="operator">(</span>p<span class="operator">.</span>x<span class="operator">);</span>
+
+					back<span class="operator">-&gt;</span>symbols<span class="operator">.</span>Set<span class="operator">(</span>masc<span class="operator">::</span>VAR_INTEGER<span class="operator">,</span>s<span class="operator">.</span>str<span class="operator">(),</span><span class="string">"window.mouse_x"</span><span class="operator">);</span>
+
+					ss<span class="operator"> &lt;&lt;</span><span class="type"> int</span><span class="operator">(</span>p<span class="operator">.</span>y<span class="operator">);</span>
+					back<span class="operator">-&gt;</span>symbols<span class="operator">.</span>Set<span class="operator">(</span>masc<span class="operator">::</span>VAR_INTEGER<span class="operator">,</span>ss<span class="operator">.</span>str<span class="operator">(),</span><span class="string">"window.mouse_y"</span><span class="operator">);</span><span class="flow">
+
+					switch</span><span class="operator">(</span>msg<span class="operator">) 
+					{</span><span class="flow">
+					case</span> WM_MOUSEMOVE<span class="operator">:</span>
+						back<span class="operator">-&gt;</span>CallProcedure<span class="operator">(</span><span class="string">"master.mousemove"</span><span class="operator">);</span><span class="flow">
+
+						break</span><span class="operator">;</span><span class="flow">
+					case</span> WM_LBUTTONDOWN<span class="operator">:</span>
+						back<span class="operator">-&gt;</span>CallProcedure<span class="operator">(</span><span class="string">"master.mousedown"</span><span class="operator">);</span><span class="flow">
+
+						break</span><span class="operator">;</span><span class="flow">
+					case</span> WM_LBUTTONUP<span class="operator">:</span>
+						back<span class="operator">-&gt;</span>CallProcedure<span class="operator">(</span><span class="string">"master.mouseup"</span><span class="operator">);</span><span class="flow">
+
+						break</span><span class="operator">;
+					}
+				}</span><span class="flow">
+				break</span><span class="operator">;</span><span class="flow">
+			case</span> WM_PAINT<span class="operator">:
+				{</span>
+					PAINTSTRUCT ps<span class="operator">;</span>
+
+					HDC dc<span class="operator"> =</span> BeginPaint<span class="operator">(</span>hwnd<span class="operator">,&amp;</span>ps<span class="operator">);</span>
+					RECT rc<span class="operator">;</span>
+					GetClientRect<span class="operator">(</span>hwnd<span class="operator">,&amp;</span>rc<span class="operator">);</span>
+
+					cdc<span class="operator"> =</span> CreateCompatibleDC<span class="operator">(</span>dc<span class="operator">);</span>
+					hbm<span class="operator"> =</span> CreateCompatibleBitmap<span class="operator">(</span>dc<span class="operator">,</span>rc<span class="operator">.</span>right<span class="operator">,</span>rc<span class="operator">.</span>bottom<span class="operator">);</span>
+
+					SelectObject<span class="operator">(</span>cdc<span class="operator">,</span>hbm<span class="operator">);</span>
+					back<span class="operator">-&gt;</span>CallProcedure<span class="operator">(</span><span class="string">"master.paint"</span><span class="operator">);</span>
+					BitBlt<span class="operator">(</span>dc<span class="operator">,</span><span class="int">0</span><span class="operator">,</span><span class="int">0</span><span class="operator">,</span>rc<span class="operator">.</span>right<span class="operator">,</span>rc<span class="operator">.</span>bottom<span class="operator">,</span>cdc<span class="operator">,</span><span class="int">0</span><span class="operator">,</span><span class="int">0</span><span class="operator">,</span>SRCCOPY<span class="operator">);</span>
+
+					EndPaint<span class="operator">(</span>hwnd<span class="operator">,&amp;</span>ps<span class="operator">);</span>
+					DeleteDC<span class="operator">(</span>cdc<span class="operator">);</span>
+					DeleteObject<span class="operator">(</span>hbm<span class="operator">);
+				}</span><span class="flow">
+
+				break</span><span class="operator">;</span><span class="flow">
+			default</span><span class="operator">:</span><span class="flow">
+				return</span> DefWindowProc<span class="operator">(</span>hwnd<span class="operator">,</span>msg<span class="operator">,</span>wParam<span class="operator">,</span>lParam<span class="operator">);
+		}</span><span class="flow">
+
+		return</span><span class="int"> 0</span><span class="operator">;
+	}</span><span class="keyword">
+	static</span> HWND hwnd<span class="operator">;</span><span class="type">
+
+	int</span> window_create<span class="operator">(</span>masc<span class="operator">::</span>Symbol_Table<span class="operator"> &amp;</span>t<span class="operator">) {</span>
+
+		WNDCLASSEX wc<span class="operator">;</span>
+		wc<span class="operator">.</span>cbSize<span class="operator"> =</span><span class="keyword"> sizeof</span><span class="operator">(</span>WNDCLASSEX<span class="operator">);</span>
+		wc<span class="operator">.</span>cbClsExtra<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;</span>
+
+		wc<span class="operator">.</span>cbWndExtra<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;</span>
+		wc<span class="operator">.</span>hbrBackground<span class="operator"> = (</span>HBRUSH<span class="operator">) (</span>COLOR_3DFACE<span class="operator">+</span><span class="int">1</span><span class="operator">);</span>
+
+		wc<span class="operator">.</span>hCursor<span class="operator"> =</span> LoadCursor<span class="operator">(</span>NULL<span class="operator">,</span> IDC_ARROW<span class="operator">);</span>
+		wc<span class="operator">.</span>hIcon<span class="operator"> =</span> LoadIcon<span class="operator">(</span>NULL<span class="operator">,</span>IDI_APPLICATION<span class="operator">);</span>
+
+		wc<span class="operator">.</span>hIconSm<span class="operator"> =</span> LoadIcon<span class="operator">(</span>NULL<span class="operator">,</span>IDI_APPLICATION<span class="operator">);</span>
+		wc<span class="operator">.</span>hInstance<span class="operator"> =</span> GetModuleHandle<span class="operator">(</span><span class="int">0</span><span class="operator">);</span>
+
+		wc<span class="operator">.</span>lpfnWndProc<span class="operator"> = (</span>WNDPROC<span class="operator">)</span> WndProc<span class="operator">;</span>
+		wc<span class="operator">.</span>lpszClassName<span class="operator"> =</span> t<span class="operator">[</span><span class="string">"window.cls_name"</span><span class="operator">].</span>val<span class="operator">.</span>c_str<span class="operator">();</span>
+
+		wc<span class="operator">.</span>lpszMenuName<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;</span>
+		wc<span class="operator">.</span>style<span class="operator"> =</span> CS_HREDRAW<span class="operator"> |</span> CS_VREDRAW<span class="operator">;</span>
+
+		RegisterClassEx<span class="operator">(&amp;</span>wc<span class="operator">);</span>
+		hwnd<span class="operator"> =</span> CreateWindow<span class="operator">(</span>t<span class="operator">[</span><span class="string">"window.cls_name"</span><span class="operator">].</span>val<span class="operator">.</span>c_str<span class="operator">(),</span>t<span class="operator">[</span><span class="string">"window.win_title"</span><span class="operator">].</span>val<span class="operator">.</span>c_str<span class="operator">(),</span>
+
+			WS_OVERLAPPED<span class="operator"> |</span> WS_SYSMENU<span class="operator"> |</span> WS_MINIMIZEBOX<span class="operator"> ,</span>atoi<span class="operator">(</span>t<span class="operator">[</span><span class="string">"window.win_x"</span><span class="operator">].</span>val<span class="operator">.</span>c_str<span class="operator">()),</span>
+
+			atoi<span class="operator">(</span>t<span class="operator">[</span><span class="string">"window.win_y"</span><span class="operator">].</span>val<span class="operator">.</span>c_str<span class="operator">()),</span>atoi<span class="operator">(</span>t<span class="operator">[</span><span class="string">"window.win_w"</span><span class="operator">].</span>val<span class="operator">.</span>c_str<span class="operator">()),</span>atoi<span class="operator">(</span>t<span class="operator">[</span><span class="string">"window.win_h"</span><span class="operator">].</span>val<span class="operator">.</span>c_str<span class="operator">()),</span><span class="int">
+
+			0</span><span class="operator">,</span><span class="int">0</span><span class="operator">,</span>GetModuleHandle<span class="operator">(</span><span class="int">0</span><span class="operator">),</span><span class="int">0</span><span class="operator">);</span>
+		ShowWindow<span class="operator">(</span>hwnd<span class="operator">,</span>SW_SHOW<span class="operator">);</span>
+
+		UpdateWindow<span class="operator">(</span>hwnd<span class="operator">);</span><span class="flow">
+		return</span><span class="int"> 0</span><span class="operator">;
+	}</span><span class="keyword">
+
+	static</span> HANDLE thandle<span class="operator">;</span>
+
+	DWORD thread_id<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;</span>
+
+	BOOL CALLBACK MsgLoop<span class="operator">(</span><span class="type">void</span><span class="operator"> *</span>ptr<span class="operator">) {</span>
+
+		MSG msg<span class="operator">;</span><span class="flow">
+		while</span><span class="operator">(</span>GetMessage<span class="operator">(&amp;</span>msg<span class="operator">,</span><span class="int">0</span><span class="operator">,</span><span class="int">0</span><span class="operator">,</span><span class="int">0</span><span class="operator">))
+		{</span>
+
+			TranslateMessage<span class="operator">(&amp;</span>msg<span class="operator">);</span>
+			DispatchMessage<span class="operator">(&amp;</span>msg<span class="operator">);
+		}</span><span class="flow">
+		return</span> FALSE<span class="operator">;
+	}</span><span class="keyword">
+
+	static</span> MSG msg<span class="operator">;</span><span class="type">
+	int</span> window_loop<span class="operator">(</span>masc<span class="operator">::</span>Symbol_Table<span class="operator"> &amp;</span>t<span class="operator">) {</span><span class="flow">
+
+		if</span><span class="operator">(</span>GetMessage<span class="operator">(&amp;</span>msg<span class="operator">,</span><span class="int">0</span><span class="operator">,</span><span class="int">0</span><span class="operator">,</span><span class="int">0</span><span class="operator">)) {</span>
+			TranslateMessage<span class="operator">(&amp;</span>msg<span class="operator">);</span>
+
+			DispatchMessage<span class="operator">(&amp;</span>msg<span class="operator">);</span>
+			t<span class="operator">[</span><span class="string">"master.app_over"</span><span class="operator">].</span>val<span class="operator"> =</span><span class="string"> "1"</span><span class="operator">;
+		}</span><span class="flow">
+
+		else</span>
+			t<span class="operator">[</span><span class="string">"master.app_over"</span><span class="operator">].</span>val<span class="operator"> =</span><span class="string"> "0"</span><span class="operator">;</span><span class="flow">
+		return</span><span class="int"> 0</span><span class="operator">;
+	}</span><span class="type">
+
+	int</span> window_msgbox<span class="operator">(</span>masc<span class="operator">::</span>Symbol_Table<span class="operator"> &amp;</span>t<span class="operator">) {</span>
+		std<span class="operator">::</span>string title<span class="operator"> =</span> t<span class="operator">.</span>Pop<span class="operator">().</span>val<span class="operator">,</span>message<span class="operator"> =</span> t<span class="operator">.</span>Pop<span class="operator">().</span>val<span class="operator">;</span>
+
+		MessageBox<span class="operator">(</span>GetForegroundWindow<span class="operator">(),</span>message<span class="operator">.</span>c_str<span class="operator">(),</span>title<span class="operator">.</span>c_str<span class="operator">(),</span>MB_OK<span class="operator"> |</span> MB_ICONINFORMATION<span class="operator">);</span><span class="flow">
+
+		return</span><span class="int"> 0</span><span class="operator">;
+	}</span><span class="type">
+
+
+	int</span> window_trans<span class="operator">(</span>masc<span class="operator">::</span>Symbol_Table<span class="operator"> &amp;</span>t<span class="operator">) {</span><span class="flow">
+
+		return</span><span class="int"> 0</span><span class="operator">;
+	}</span><span class="type">
+
+	int</span> window_disp<span class="operator">(</span>masc<span class="operator">::</span>Symbol_Table<span class="operator"> &amp;</span>t<span class="operator">) {</span><span class="flow">
+
+		return</span><span class="int"> 0</span><span class="operator">;
+	}</span><span class="type">
+	int</span> window_waitmsg<span class="operator">(</span>masc<span class="operator">::</span>Symbol_Table<span class="operator"> &amp;</span>t<span class="operator">) {</span>
+
+		WaitMessage<span class="operator">();</span><span class="flow">
+		return</span><span class="int"> 0</span><span class="operator">;
+	}</span><span class="type">
+
+	int</span> window_drawtext<span class="operator">(</span>masc<span class="operator">::</span>Symbol_Table<span class="operator"> &amp;</span>t<span class="operator">) {</span>
+
+		std<span class="operator">::</span>string text<span class="operator"> =</span> t<span class="operator">.</span>Pop<span class="operator">().</span>val<span class="operator">;</span>
+		HDC dc<span class="operator"> =</span> GetDC<span class="operator">(</span>hwnd<span class="operator">);</span>
+
+		TextOut<span class="operator">(</span>dc<span class="operator">,</span>atoi<span class="operator">(</span>t<span class="operator">.</span>Pop<span class="operator">().</span>val<span class="operator">.</span>c_str<span class="operator">()),</span>atoi<span class="operator">(</span>t<span class="operator">.</span>Pop<span class="operator">().</span>val<span class="operator">.</span>c_str<span class="operator">()),</span>text<span class="operator">.</span>c_str<span class="operator">(),</span><span class="type">int</span><span class="operator">(</span>text<span class="operator">.</span>length<span class="operator">()));</span>
+
+		DeleteDC<span class="operator">(</span>dc<span class="operator">);</span><span class="flow">
+		return</span><span class="int"> 0</span><span class="operator">;
+	}</span><span class="type">
+
+	int</span> window_redraw<span class="operator">(</span>masc<span class="operator">::</span>Symbol_Table<span class="operator"> &amp;</span>t<span class="operator">) {</span>
+
+		InvalidateRect<span class="operator">(</span>hwnd<span class="operator">,</span>NULL<span class="operator">,</span>FALSE<span class="operator">);</span><span class="flow">
+		return</span><span class="int"> 0</span><span class="operator">;
+	}</span><span class="pre">
+
+#endif
+</span><span class="type">
+	void</span> SetStdFunc<span class="operator">(</span>masc<span class="operator">::</span>BackEnd<span class="operator"> &amp;</span>bend<span class="operator">) {</span>
+		back<span class="operator"> = &amp;</span>bend<span class="operator">;</span>
+
+		bend<span class="operator">.</span>AddExternal<span class="operator">(</span><span class="string">"file.read"</span><span class="operator">,</span> file_read<span class="operator">);</span>
+		bend<span class="operator">.</span>AddExternal<span class="operator">(</span><span class="string">"file.write"</span><span class="operator">,</span> file_write<span class="operator">);</span>
+
+		bend<span class="operator">.</span>AddExternal<span class="operator">(</span><span class="string">"file.bread"</span><span class="operator">,</span> file_bread<span class="operator">);</span>
+		bend<span class="operator">.</span>AddExternal<span class="operator">(</span><span class="string">"console.clear"</span><span class="operator">,</span> console_clear<span class="operator">);</span>
+
+		bend<span class="operator">.</span>AddExternal<span class="operator">(</span><span class="string">"console.pause"</span><span class="operator">,</span> console_pause<span class="operator">);</span>
+		bend<span class="operator">.</span>AddExternal<span class="operator">(</span><span class="string">"console.input"</span><span class="operator">,</span> console_input<span class="operator">);</span>
+
+		bend<span class="operator">.</span>AddExternal<span class="operator">(</span><span class="string">"console.output"</span><span class="operator">,</span> console_output<span class="operator">);</span>
+		bend<span class="operator">.</span>AddExternal<span class="operator">(</span><span class="string">"console.flush"</span><span class="operator">,</span> console_flush<span class="operator">);</span><span class="pre">
+
+#ifdef _WIN32
+</span>		bend<span class="operator">.</span>AddExternal<span class="operator">(</span><span class="string">"window.create"</span><span class="operator">,</span> window_create<span class="operator">);</span>
+		bend<span class="operator">.</span>AddExternal<span class="operator">(</span><span class="string">"window.loop"</span><span class="operator">,</span> window_loop<span class="operator">);</span>
+
+		bend<span class="operator">.</span>AddExternal<span class="operator">(</span><span class="string">"window.msgbox"</span><span class="operator">,</span> window_msgbox<span class="operator">);</span>
+		bend<span class="operator">.</span>AddExternal<span class="operator">(</span><span class="string">"window.waitmsg"</span><span class="operator">,</span> window_waitmsg<span class="operator">);</span>
+
+		bend<span class="operator">.</span>AddExternal<span class="operator">(</span><span class="string">"window.trans"</span><span class="operator">,</span> window_trans<span class="operator">);</span>
+		bend<span class="operator">.</span>AddExternal<span class="operator">(</span><span class="string">"window.disp"</span><span class="operator">,</span>window_disp<span class="operator">);</span>
+
+		bend<span class="operator">.</span>AddExternal<span class="operator">(</span><span class="string">"window.drawtext"</span><span class="operator">,</span> window_drawtext<span class="operator">);</span>
+		bend<span class="operator">.</span>AddExternal<span class="operator">(</span><span class="string">"window.redraw"</span><span class="operator">,</span> window_redraw<span class="operator">);</span><span class="pre">
+
+#endif
+</span><span class="operator">
+	}
+
+}</span><span class="pre">
+
+#endif
+</span>
+
+</pre>
+</body>
+</html>

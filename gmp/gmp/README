@@ -1,0 +1,12 @@
+Requires:
+libgnomeui-2.0
+gtk+2.0
+gdk-2.0
+
+
+To compile:
+
+ LDFLAGS="`pkg-config libgnomeui-2.0 --libs` `pkg-config gtk+-2.0 --libs` `pkg-config gdk-2.0 --libs`" CPPFLAGS="`pkg-config libgnomeui-2.0 --cflags` `pkg-config gtk+-2.0 --cflags` `pkg-config gdk-2.0 --cflags`" CFLAGS="-O0 -g3 " ./configure
+ make
+
+tested on Linux/Cygwin

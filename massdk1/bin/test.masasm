@@ -1,0 +1,53 @@
+
+; hello world in masasm
+
+
+mas object jared {
+
+variables {
+
+var$ str
+var& x := 10
+var$ str2
+
+} 
+
+constructor {
+
+smov str," test "
+mprint str
+add x,10
+mprint " el test0r "
+start:
+;stream str2, " x " + " y "
+;call master
+
+}
+
+
+deconstructor {
+
+}
+
+
+proc master {
+
+
+}
+
+proc joe {
+{
+
+}
+
+
+}
+
+block {
+
+
+}
+
+
+ 
+}

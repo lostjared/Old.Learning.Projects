@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "mxSDL_font_demo", "mxSDL_font_demo\mxSDL_font_demo.vcproj", "{90E5A16E-05DB-46B8-9A5F-69B3EB6E7E5D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{90E5A16E-05DB-46B8-9A5F-69B3EB6E7E5D}.Debug.ActiveCfg = Debug|Win32
+		{90E5A16E-05DB-46B8-9A5F-69B3EB6E7E5D}.Debug.Build.0 = Debug|Win32
+		{90E5A16E-05DB-46B8-9A5F-69B3EB6E7E5D}.Release.ActiveCfg = Release|Win32
+		{90E5A16E-05DB-46B8-9A5F-69B3EB6E7E5D}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

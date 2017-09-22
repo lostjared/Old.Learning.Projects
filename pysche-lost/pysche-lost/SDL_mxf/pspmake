@@ -1,0 +1,14 @@
+PSPPATH := $(shell psp-config --psp-prefix)
+PSPSDK := $(shell psp-config --pspsdk-path)
+ARCH = psp-
+PSPBIN = $(PSPSDK)/../bin
+all:
+	$(ARCH)gcc -c mxfont.c pixelbuffer.c `$(PSPBIN)/sdl-config --cflags`
+	$(ARCH)ar cru libmxf.a mxfont.o pixelbuffer.o
+	$(ARCH)ranlib libmxf.a
+	
+install: all
+	cp libmxf.a /usr/local/pspdev/psp/lib
+	cp mxfont.h /usr/local/pspdev/psp/include/SDL/SDL_mxf.h
+clean:
+	rm -f *.o

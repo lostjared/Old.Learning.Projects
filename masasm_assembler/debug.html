@@ -1,0 +1,84 @@
+<HTML><FONT FACE="FIXEDSYS" COLOR="#BD0000">masasm assembler debug output, written by Jared Bruni<br><br>
+
+<a href="http://www.lostsidedead.com">www.lostsidedead.com</a><br>
+
+
+<br><br><font color="green">variable list</font><br>
+
+<br>variable name: <font color="blue">con0</font>  value (<font color="purple"> 
+
+hello world  in masasm written by jared bruni
+
+
+ </font> ) 
+<br><br>variable name: <font color="blue">con1</font>  value (<font color="purple">  
+
+the value of x is:fs  </font> ) 
+<br><br>variable name: <font color="blue">x</font>  value (<font color="purple"> (null) </font> ) 
+<br><br>variable name: <font color="blue">y</font>  value (<font color="purple"> (null) </font> ) 
+<br><br>variable name: <font color="blue">z</font>  value (<font color="purple"> 0 </font> ) 
+<br><br>variable name: <font color="blue">output</font>  value (<font color="purple"> (null) </font> ) 
+<br>
+<br><br><font color="green">code blocks</font><br><br>
+
+
+<br>code block (proc/con/var) <font color="blue">variables </font>
+<br>{<br>
+ 
+
+var& x
+var& y
+var& z := 0
+var$ output
+
+
+<br>}<br>
+
+<br>code block (proc/con/var) <font color="blue">constructor </font>
+<br>{<br>
+ 
+
+mprint "
+
+hello world  in masasm written by jared bruni
+
+
+"
+
+mov x,10
+mov y,10
+add z,x
+add z,y
+smov output, " 
+
+the value of x is:fs "
+scat output,x
+mprint output
+
+
+
+
+<br>}<br>
+
+<br>code block (proc/con/var) <font color="blue">deconstructor </font>
+<br>{<br>
+ 
+
+
+
+<br>}<br>
+
+<br>code block (proc/con/var) <font color="blue">update </font>
+<br>{<br>
+ 
+
+
+<br>}<br>
+
+<br>code block (proc/con/var) <font color="blue">loadfiles </font>
+<br>{<br>
+
+
+
+<br>}<br>
+</FONT></HTML>

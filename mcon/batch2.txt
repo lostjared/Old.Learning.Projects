@@ -1,0 +1,5 @@
+echo this is the second batch file to proccess
+add 10 20
+add 20 50
+sub 40 210
+mul 20 10

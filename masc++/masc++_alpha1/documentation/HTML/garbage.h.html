@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>garbage.h</title>
+<meta name="generator" content="C++2HTML by Jasper Bedaux" />
+<!-- To generate your own colored code visit http://www.bedaux.net/cpp2html/ -->
+<style type="text/css">
+.comment { color: #999999; font-style: italic; }
+.pre { color: #000099; }
+.string { color: #009900; }
+.char { color: #009900; }
+.float { color: #996600; }
+.int { color: #999900; }
+.bool { color: #000000; font-weight: bold; }
+.type { color: #FF6633; }
+.flow { color: #FF0000; }
+.keyword { color: #990000; }
+.operator { color: #663300; font-weight: bold; }
+</style>
+</head>
+<body>
+<pre><span class="pre">#ifndef GARBAGE_H__
+#define GARBAGE_H__
+</span><span class="keyword">
+class</span> Garbage_Collector<span class="operator"> {</span><span class="keyword">
+
+public</span><span class="operator">:
+	~</span>Garbage_Collector<span class="operator">() {</span><span class="flow">
+		for</span><span class="operator">(</span>size_t i<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;</span> i<span class="operator"> &lt;</span> size<span class="operator">;</span> i<span class="operator">++) {</span><span class="comment">
+
+			/*char data[256];
+			std::sprintf(data,"Freed data: %s\n", mem_ptr[i]);
+			OutputDebugString(data);*/</span>
+			free<span class="operator">(</span>mem_ptr<span class="operator">[</span>i<span class="operator">]);
+		}
+	}</span>
+
+	Garbage_Collector<span class="operator">() {</span>
+		mem_ptr<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;</span>
+
+		size<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;
+	}</span><span class="type">
+
+	void</span><span class="operator"> *</span>alloc<span class="operator">(</span>size_t pos<span class="operator">) {</span><span class="type">
+
+		void</span><span class="operator"> *</span>ptr<span class="operator"> =</span> malloc<span class="operator">(</span>pos<span class="operator">);</span>
+		mem_ptr<span class="operator"> = (</span><span class="type">void</span><span class="operator">**)</span>realloc<span class="operator">(</span>mem_ptr<span class="operator">,</span><span class="keyword"> sizeof</span><span class="operator">(</span><span class="type">void</span><span class="operator">**) * (++</span>size<span class="operator">));</span><span class="type">
+
+		void</span><span class="operator"> **</span>temp_ptr<span class="operator">  =</span> mem_ptr<span class="operator">;</span>
+		temp_ptr<span class="operator">  += (</span>size<span class="operator">-</span><span class="int">1</span><span class="operator">);
+		*</span>temp_ptr<span class="operator"> =</span> ptr<span class="operator">;</span><span class="flow">
+
+		return</span> ptr<span class="operator">;
+	}</span><span class="type">
+
+	void</span><span class="operator"> *</span><span class="keyword">operator</span><span class="operator">[](</span>size_t pos<span class="operator">) {</span><span class="flow"> return</span> mem_ptr<span class="operator">[</span>pos<span class="operator">]; }</span><span class="keyword">
+
+private</span><span class="operator">:</span><span class="type">
+	void</span><span class="operator"> **</span>mem_ptr<span class="operator">;</span>
+	size_t size<span class="operator">;
+
+
+};</span><span class="keyword">
+
+
+static</span> Garbage_Collector mem<span class="operator">;</span><span class="pre">
+
+#endif
+</span>
+</pre>
+</body>
+</html>

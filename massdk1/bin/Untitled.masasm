@@ -1,0 +1,26 @@
+
+
+mas object Jared {
+
+
+variables {
+
+var# pay
+var# rate
+var$ name
+
+}
+
+
+constructor {
+
+println " welcome to a simple script example..  "
+
+}
+
+deconstructor {
+
+}
+
+
+}

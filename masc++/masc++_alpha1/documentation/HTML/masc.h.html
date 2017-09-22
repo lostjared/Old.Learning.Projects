@@ -1,0 +1,308 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>masc.h</title>
+<meta name="generator" content="C++2HTML by Jasper Bedaux" />
+<!-- To generate your own colored code visit http://www.bedaux.net/cpp2html/ -->
+<style type="text/css">
+.comment { color: #999999; font-style: italic; }
+.pre { color: #000099; }
+.string { color: #009900; }
+.char { color: #009900; }
+.float { color: #996600; }
+.int { color: #999900; }
+.bool { color: #000000; font-weight: bold; }
+.type { color: #FF6633; }
+.flow { color: #FF0000; }
+.keyword { color: #990000; }
+.operator { color: #663300; font-weight: bold; }
+</style>
+</head>
+<body>
+<pre><span class="pre">#ifndef MASC__H_
+#define MASC__H_
+
+#include&lt;iostream&gt;
+#include&lt;fstream&gt;
+
+#include&lt;map&gt;
+#include&lt;vector&gt;
+#include&lt;string&gt;
+#include&lt;list&gt;
+#include&lt;cstdio&gt;
+#include "garbage.h"
+</span><span class="keyword">
+
+namespace</span> masc<span class="operator"> {</span><span class="keyword">
+
+	const</span><span class="type"> double</span> version<span class="operator"> =</span><span class="float"> 2.01</span><span class="operator">;</span><span class="type">
+
+	char</span><span class="operator"> *</span>mysprintf<span class="operator">(</span><span class="type">char</span><span class="operator"> *</span>src<span class="operator">,</span><span class="keyword"> const</span><span class="type"> char</span><span class="operator"> *</span>sptr<span class="operator">, ...);</span><span class="type">
+
+	int</span> myprintf<span class="operator">(</span><span class="keyword">const</span><span class="type"> char</span><span class="operator"> *</span>src<span class="operator">, ...);</span><span class="keyword">
+
+	struct</span> symb<span class="operator"> {</span>
+
+		std<span class="operator">::</span>string val<span class="operator">,</span>name<span class="operator">;</span><span class="type">
+		int</span> type<span class="operator">;</span>
+		symb<span class="operator">() {</span> val<span class="operator"> =</span> name<span class="operator"> =</span><span class="string"> ""</span><span class="operator">;</span> type<span class="operator"> =</span><span class="int"> 0</span><span class="operator">; }
+	};</span><span class="keyword">
+
+	class</span> BackEnd<span class="operator">;</span><span class="keyword">
+	class</span> Parser<span class="operator">;</span><span class="keyword">
+
+	class</span> Symbol_Table<span class="operator"> {</span><span class="keyword">
+
+	public</span><span class="operator">:</span><span class="type">
+		void</span> Set<span class="operator">(</span><span class="type">int</span> type<span class="operator">,</span> std<span class="operator">::</span>string val<span class="operator">,</span> std<span class="operator">::</span>string name<span class="operator">);</span>
+
+		symb<span class="operator"> &amp;</span>Get<span class="operator">(</span>std<span class="operator">::</span>string name<span class="operator">);</span><span class="type">
+		void</span> DebugPrint<span class="operator">()</span><span class="keyword"> const</span><span class="operator">;</span>
+
+		symb<span class="operator"> &amp;</span><span class="keyword">operator</span><span class="operator">[](</span> std<span class="operator">::</span>string str<span class="operator"> ) {</span><span class="flow"> return</span> vars<span class="operator">[</span>str<span class="operator">]; }</span>
+
+		symb<span class="operator"> &amp;</span><span class="keyword">operator</span><span class="operator">() (</span> size_t pos<span class="operator"> );</span>
+		symb<span class="keyword"> operator</span><span class="operator">--();</span>
+		std<span class="operator">::</span>list<span class="operator">&lt;</span>symb<span class="operator">&gt;::</span>iterator<span class="keyword"> operator</span><span class="operator">*() {</span><span class="flow"> return</span> st<span class="operator">.</span>begin<span class="operator">(); }</span><span class="type">
+
+		void</span><span class="keyword"> operator</span><span class="operator">+=(</span><span class="keyword">const</span> symb<span class="operator"> &amp;</span>s<span class="operator">);</span>
+		std<span class="operator">::</span>list<span class="operator">&lt;</span>symb<span class="operator">&gt;</span> st<span class="operator">;</span>
+
+		symb Pop<span class="operator">();</span><span class="type">
+		void</span> PopAll<span class="operator">();</span><span class="type">
+		void</span> Push<span class="operator">(</span>symb<span class="operator"> &amp;</span>s<span class="operator">);</span><span class="keyword">
+
+	protected</span><span class="operator">:</span>
+		std<span class="operator">::</span>map<span class="operator">&lt;</span>std<span class="operator">::</span>string<span class="operator">,</span> symb<span class="operator">&gt;</span> vars<span class="operator">;</span><span class="keyword">
+
+		friend class</span> BackEnd<span class="operator">;</span><span class="keyword">
+		friend class</span> Parser<span class="operator">;
+	};</span><span class="keyword">
+
+	class</span> MFile<span class="operator"> {</span><span class="keyword">
+
+	public</span><span class="operator">:</span>
+		std<span class="operator">::</span>string cur_line<span class="operator">;</span>
+
+		MFile<span class="operator">(</span>std<span class="operator">::</span>string s<span class="operator">) {</span>
+
+			file<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;</span>
+			Open<span class="operator">(</span>s<span class="operator">);
+		}
+
+		~</span>MFile<span class="operator">() {</span><span class="flow">
+			if</span><span class="operator">(</span>opened<span class="operator"> ==</span><span class="bool"> true</span><span class="operator">)</span>
+
+				file<span class="operator">-&gt;</span>close<span class="operator">();</span><span class="keyword">
+			delete</span> file<span class="operator">;
+		}</span><span class="type">
+
+		void</span> Open<span class="operator">(</span>std<span class="operator">::</span>string s<span class="operator">) {</span><span class="flow">
+
+			if</span><span class="operator">(</span>file<span class="operator"> &amp;&amp;</span> file<span class="operator">-&gt;</span>is_open<span class="operator">())</span>
+			file<span class="operator">-&gt;</span>close<span class="operator">();</span><span class="flow">
+
+			if</span><span class="operator">(</span>file<span class="operator">)</span><span class="keyword"> delete</span> file<span class="operator">;</span>
+			file<span class="operator"> =</span><span class="keyword"> new</span> std<span class="operator">::</span>fstream<span class="operator">;</span>
+
+			file<span class="operator">-&gt;</span>open<span class="operator">(</span>s<span class="operator">.</span>c_str<span class="operator">(),</span>std<span class="operator">::</span>ios<span class="operator">::</span>in<span class="operator">);</span><span class="flow">
+			if</span><span class="operator">(!</span>file<span class="operator">-&gt;</span>is_open<span class="operator">()) {</span> opened<span class="operator"> =</span><span class="bool"> false</span><span class="operator">;</span><span class="flow"> return</span><span class="operator">; }</span>
+
+			opened<span class="operator"> =</span><span class="bool"> true</span><span class="operator">;</span>
+			file_name<span class="operator"> =</span> s<span class="operator">;</span>
+			curline<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;
+		}</span><span class="type">
+
+		bool</span> GetLine<span class="operator">() {</span><span class="flow">
+			if</span><span class="operator">(</span>file<span class="operator">-&gt;</span>eof<span class="operator">()) {</span>
+				file<span class="operator">-&gt;</span>close<span class="operator">();</span><span class="flow">
+
+				return</span><span class="bool"> true</span><span class="operator">;
+			}</span>
+			std<span class="operator">::</span>getline<span class="operator">(*</span>file<span class="operator">,</span>cur_line<span class="operator">);
+			++</span>curline<span class="operator">;</span><span class="flow">
+
+			return</span><span class="bool"> false</span><span class="operator">;
+		}</span><span class="keyword">
+
+	protected</span><span class="operator">:</span>
+		std<span class="operator">::</span>fstream<span class="operator"> *</span>file<span class="operator">;</span><span class="type">
+
+		bool</span> opened<span class="operator">;</span>
+		std<span class="operator">::</span>string file_name<span class="operator">;</span><span class="type">
+		int</span> curline<span class="operator">;
+	};</span><span class="keyword">
+
+	struct</span> Token<span class="operator"> {</span><span class="type">
+		unsigned char</span> type<span class="operator">;</span>
+		std<span class="operator">::</span>string token<span class="operator">;</span><span class="type">
+
+		int</span> line_num<span class="operator">;</span>
+		std<span class="operator">::</span>string source_file<span class="operator">;
+	};</span><span class="keyword">
+
+	enum</span><span class="operator"> {</span> IDENTIFIER<span class="operator"> =</span><span class="int"> 1</span><span class="operator">,</span> DIGIT<span class="operator">,</span> STRING<span class="operator">,</span> CODELABEL<span class="operator"> };</span><span class="keyword">
+
+	class</span> Parser<span class="operator"> :</span><span class="keyword"> public</span> MFile<span class="operator"> {</span><span class="keyword">
+	public</span><span class="operator">:</span><span class="keyword">
+
+		friend class</span> BackEnd<span class="operator">;</span>
+		Parser<span class="operator">(</span>std<span class="operator">::</span>string s<span class="operator">);</span><span class="type">
+		void</span> Begin<span class="operator">();</span><span class="type">
+
+		void</span> Parse<span class="operator">(</span>std<span class="operator">::</span>string str<span class="operator">);</span><span class="type">
+		void</span> DebugTokens<span class="operator">();</span>
+		Token<span class="operator"> &amp;</span><span class="keyword">operator</span><span class="operator">[](</span>size_t pos<span class="operator">) {</span><span class="flow">  if</span><span class="operator">(</span>pos<span class="operator"> &gt;=</span><span class="int"> 0</span><span class="operator"> &amp;&amp;</span> pos<span class="operator"> &lt;</span> tok_vec<span class="operator">.</span>size<span class="operator">())</span><span class="flow"> return</span> tok_vec<span class="operator">[</span>pos<span class="operator">];</span><span class="flow"> else return</span> cur<span class="operator">; }</span><span class="type">
+
+		bool</span> LexAnayalize<span class="operator">();</span><span class="type">
+		void</span> StartParse<span class="operator">(</span>std<span class="operator">::</span>string str<span class="operator">);</span><span class="keyword">
+		inline</span><span class="type"> bool</span> pBounds<span class="operator">(</span>size_t pos<span class="operator">) {</span><span class="flow"> 
+			if</span><span class="operator">(</span>pos<span class="operator"> &gt;=</span><span class="int"> 0</span><span class="operator"> &amp;&amp;</span> pos<span class="operator"> &lt;</span> tok_vec<span class="operator">.</span>size<span class="operator">()) {</span> 
+				current_line<span class="operator"> =</span> tok_vec<span class="operator">[</span>pos<span class="operator">].</span>line_num<span class="operator">;</span>
+
+				current_file<span class="operator"> =</span> tok_vec<span class="operator">[</span>pos<span class="operator">].</span>source_file<span class="operator">;</span><span class="flow">
+				return</span><span class="bool"> true</span><span class="operator">;
+			}</span><span class="flow">
+
+			return</span><span class="bool"> false</span><span class="operator">;
+		}</span><span class="type">
+		void</span> ErrorMsg<span class="operator">(</span><span class="keyword">const</span><span class="type"> char</span><span class="operator"> *</span>str<span class="operator">, ...);</span><span class="keyword">
+
+	private</span><span class="operator">:</span>
+		Token cur<span class="operator">;</span><span class="type">
+		int</span> err<span class="operator">,</span>current_line<span class="operator">;</span>
+		std<span class="operator">::</span>string current_file<span class="operator">;</span>
+
+		std<span class="operator">::</span>vector<span class="operator">&lt;</span>Token<span class="operator">&gt;</span> tok_vec<span class="operator">;</span>
+		std<span class="operator">::</span>vector<span class="operator">&lt;</span>std<span class="operator">::</span>string<span class="operator">&gt;</span> insert_vec<span class="operator">;
+	};</span><span class="keyword">
+
+	struct</span> Instruct<span class="operator"> {</span><span class="type">
+		unsigned char</span> op_code<span class="operator">;</span>
+		std<span class="operator">::</span>string op1<span class="operator">;</span>
+
+		std<span class="operator">::</span>string op2<span class="operator">;</span>
+		Instruct<span class="operator">(</span><span class="type">unsigned char</span> op_code<span class="operator">,</span> std<span class="operator">::</span>string op1<span class="operator">,</span> std<span class="operator">::</span>string op2<span class="operator">) {</span><span class="keyword">
+
+			this</span><span class="operator">-&gt;</span>op_code<span class="operator"> =</span> op_code<span class="operator">;</span><span class="keyword">
+			this</span><span class="operator">-&gt;</span>op1<span class="operator"> =</span> op1<span class="operator">;</span><span class="keyword">
+
+			this</span><span class="operator">-&gt;</span>op2<span class="operator"> =</span> op2<span class="operator">;
+		}</span>
+		Instruct<span class="operator">() {</span> op_code<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;</span> op1<span class="operator"> =</span> op2<span class="operator"> =</span><span class="string"> ""</span><span class="operator">; }
+	};</span><span class="keyword">
+
+	struct</span> External_Callback<span class="operator"> {</span><span class="type">
+		int</span><span class="operator"> (*</span>f<span class="operator">) (</span>Symbol_Table<span class="operator"> &amp;</span>t<span class="operator">);</span>
+
+		std<span class="operator">::</span>string name<span class="operator">,</span>other_name<span class="operator">;</span><span class="type">
+		bool</span> isdef<span class="operator">,</span>imp<span class="operator">;</span>
+		External_Callback<span class="operator">() {</span>
+
+			name<span class="operator"> =</span><span class="string"> ""</span><span class="operator">;</span>
+			isdef<span class="operator"> =</span><span class="bool"> false</span><span class="operator">;</span>
+			imp<span class="operator"> =</span><span class="bool"> false</span><span class="operator">;
+		}
+	};</span><span class="keyword">
+
+	enum</span> TOK_TYPE<span class="operator"> {</span> TOK_INSERT<span class="operator">,</span> TOK_MAIN<span class="operator">,</span> TOK_USES<span class="operator">,</span> TOK_MAS<span class="operator">,</span> TOK_VAR<span class="operator">,</span> TOK_BEGIN<span class="operator">,</span> TOK_END<span class="operator">,</span> TOK_MOV<span class="operator">,</span> TOK_ADD<span class="operator">,</span>TOK_SUB<span class="operator">,</span>TOK_MUL<span class="operator">,</span>TOK_DIV<span class="operator">,</span>TOK_OR<span class="operator">,</span> TOK_XOR<span class="operator">,</span>TOK_AND<span class="operator">,</span>TOK_NOT<span class="operator">,</span>TOK_PUSH<span class="operator">,</span>TOK_POP<span class="operator">,</span>TOK_INC<span class="operator">,</span>TOK_DEC<span class="operator">,</span>TOK_CMP<span class="operator">,</span>TOK_JMP<span class="operator">,</span>TOK_JNE<span class="operator">,</span>TOK_JE<span class="operator">,</span>TOK_JL<span class="operator">,</span>TOK_JG<span class="operator">,</span>TOK_JLE<span class="operator">,</span>TOK_JGE<span class="operator">,</span>TOK_RET<span class="operator">,</span> TOK_EXIT<span class="operator">,</span>TOK_CALL<span class="operator">,</span>TOK_SCAT<span class="operator">,</span>TOK_PRINT<span class="operator">,</span> TOK_PROC<span class="operator">,</span>TOK_IMPLEMENT<span class="operator">,</span>TOK_EXTERN<span class="operator">,</span>VAR_INTEGER<span class="operator">,</span> VAR_STRING<span class="operator">,</span> VAR_FLOAT<span class="operator"> };</span><span class="keyword">
+
+	static</span><span class="type"> char</span><span class="operator"> *</span>tok_array<span class="operator">[] = {</span><span class="string">"insert"</span><span class="operator">,</span><span class="string"> "master"</span><span class="operator">,</span><span class="string">"uses"</span><span class="operator">,</span><span class="string">"mas"</span><span class="operator">,</span><span class="string">"var"</span><span class="operator">,</span><span class="string">"begin"</span><span class="operator">,</span><span class="string">"end"</span><span class="operator">,</span><span class="string">"mov"</span><span class="operator">,</span><span class="string">"add"</span><span class="operator">,</span><span class="string">"sub"</span><span class="operator">,</span><span class="string">"mul"</span><span class="operator">,</span><span class="string">"div"</span><span class="operator">,</span><span class="string">"or"</span><span class="operator">,</span><span class="string">"xor"</span><span class="operator">,</span><span class="string">"and"</span><span class="operator">,</span><span class="string">"not"</span><span class="operator">,</span><span class="string"> "push"</span><span class="operator">,</span><span class="string"> "pop"</span><span class="operator">,</span><span class="string">"inc"</span><span class="operator">,</span><span class="string">"dec"</span><span class="operator">,</span><span class="string">"cmp"</span><span class="operator">,</span><span class="string">"jmp"</span><span class="operator">,</span><span class="string">"jne"</span><span class="operator">,</span><span class="string">"je"</span><span class="operator">,</span><span class="string">"jl"</span><span class="operator">,</span><span class="string">"jg"</span><span class="operator">,</span><span class="string">"jle"</span><span class="operator">,</span><span class="string">"jge"</span><span class="operator">,</span><span class="string">"ret"</span><span class="operator">,</span><span class="string">"exit"</span><span class="operator">,</span><span class="string">"call"</span><span class="operator">,</span><span class="string">"scat"</span><span class="operator">,</span><span class="string">"print"</span><span class="operator">,</span><span class="string">"proc"</span><span class="operator">,</span><span class="string">"implement"</span><span class="operator">,</span><span class="string">"extern"</span><span class="operator">,</span><span class="string">"var&amp;"</span><span class="operator">,</span><span class="string">"var$"</span><span class="operator">,</span><span class="string">"var#"</span><span class="operator">,</span><span class="int"> 0</span><span class="operator">,</span><span class="int"> 0</span><span class="operator"> };</span><span class="keyword">
+
+	enum</span> PROC_RETURN<span class="operator"> {</span> PROC_CONT<span class="operator">,</span> PROC_JMP<span class="operator">,</span> PROC_RET<span class="operator"> };</span><span class="keyword">
+
+	struct</span> Code_Label<span class="operator"> {</span>
+		std<span class="operator">::</span>string label_name<span class="operator">;</span>
+		std<span class="operator">::</span>string proc<span class="operator">;</span>
+
+		size_t pos<span class="operator">;</span>
+		Code_Label<span class="operator">(</span>std<span class="operator">::</span>string label_name<span class="operator">,</span> std<span class="operator">::</span>string proc<span class="operator">,</span> size_t pos<span class="operator">) {</span><span class="keyword">
+
+			this</span><span class="operator">-&gt;</span>label_name<span class="operator"> =</span> label_name<span class="operator">;</span><span class="keyword">
+			this</span><span class="operator">-&gt;</span>pos<span class="operator"> =</span> pos<span class="operator">;</span><span class="keyword">
+
+			this</span><span class="operator">-&gt;</span>proc<span class="operator"> =</span> proc<span class="operator">;
+		}</span>
+		Code_Label<span class="operator">() {</span>
+			label_name<span class="operator"> =</span><span class="string"> ""</span><span class="operator">;</span>
+
+			pos<span class="operator"> =</span><span class="int"> 0</span><span class="operator">;</span>
+			proc<span class="operator"> =</span><span class="string"> ""</span><span class="operator">;
+		}
+	};</span><span class="keyword">
+
+	class</span> BackEnd<span class="operator"> {</span>
+		Parser<span class="operator"> *</span>p<span class="operator">;</span>
+		std<span class="operator">::</span>vector<span class="operator">&lt;</span>std<span class="operator">::</span>vector<span class="operator">&lt;</span>Instruct<span class="operator">&gt; &gt;</span> ins<span class="operator">;</span>
+
+		std<span class="operator">::</span>string prog_name<span class="operator">,</span>current_obj<span class="operator">;</span>
+		std<span class="operator">::</span>vector<span class="operator">&lt;</span>std<span class="operator">::</span>string<span class="operator">&gt;</span> uses<span class="operator">;</span>
+
+		std<span class="operator">::</span>list<span class="operator">&lt;</span>std<span class="operator">::</span>pair<span class="operator">&lt;</span>size_t<span class="operator">,</span>size_t<span class="operator">&gt; &gt;</span> code<span class="operator">;</span><span class="keyword">
+	public</span><span class="operator">:</span>
+
+		Symbol_Table symbols<span class="operator">;</span>
+
+		BackEnd<span class="operator">(</span>Parser<span class="operator"> *</span>p<span class="operator">) {</span><span class="keyword">
+			this</span><span class="operator">-&gt;</span>p<span class="operator"> =</span> p<span class="operator">;</span>
+
+			memset<span class="operator">(</span>reg<span class="operator">,</span><span class="int">0</span><span class="operator">,</span><span class="keyword">sizeof</span><span class="operator">(</span>reg<span class="operator">));</span>
+			back<span class="operator"> =</span><span class="keyword"> this</span><span class="operator">;
+		}
+		~</span>BackEnd<span class="operator">() {</span><span class="flow">
+
+			if</span><span class="operator">(</span>p<span class="operator">)</span><span class="keyword">
+				delete</span> p<span class="operator">;
+		}</span><span class="type">
+		void</span> Convert<span class="operator">();</span><span class="type">
+
+		void</span> Execute<span class="operator">(</span><span class="type">bool</span> anaylize<span class="operator">);</span><span class="keyword">
+		
+		inline</span><span class="type"> void</span> Debug<span class="operator">() {</span> std<span class="operator">::</span>cout<span class="operator"> &lt;&lt;</span><span class="string"> "Program Name: "</span><span class="operator"> &lt;&lt;</span> prog_name<span class="operator"> &lt;&lt;</span><span class="char"> '\n'</span><span class="operator">;</span> p<span class="operator">-&gt;</span>DebugTokens<span class="operator">();</span> symbols<span class="operator">.</span>DebugPrint<span class="operator">();</span>  DebugInc<span class="operator">(); }</span><span class="keyword">
+
+		inline</span><span class="type"> bool</span> Bounds<span class="operator">(</span>size_t pos<span class="operator">) {</span><span class="flow"> if</span><span class="operator">(</span>pos<span class="operator"> &gt;=</span><span class="int"> 0</span><span class="operator"> &amp;&amp;</span> pos<span class="operator"> &lt;</span> p<span class="operator">-&gt;</span>tok_vec<span class="operator">.</span>size<span class="operator">())</span><span class="flow"> return</span><span class="bool"> true</span><span class="operator">;</span><span class="flow"> return</span><span class="bool"> false</span><span class="operator">; }</span>
+
+		size_t Find<span class="operator">(</span>std<span class="operator">::</span>string what<span class="operator">);</span><span class="type">
+		void</span> AddExternal<span class="operator">(</span>std<span class="operator">::</span>string name<span class="operator">,</span><span class="type"> int</span><span class="operator"> (*</span>f<span class="operator">)(</span>Symbol_Table<span class="operator"> &amp;</span>t<span class="operator">));</span><span class="type">
+
+		void</span> DebugHTML<span class="operator">(</span>std<span class="operator">::</span>string src<span class="operator">,</span><span class="type">bool</span> sout<span class="operator">);</span>
+		std<span class="operator">::</span>string GetName<span class="operator">() {</span><span class="flow"> return</span> prog_name<span class="operator">; }</span><span class="type">
+
+		void</span> CallProcedure<span class="operator">(</span>std<span class="operator">::</span>string proc_name<span class="operator">);</span><span class="keyword">
+		static class</span> BackEnd<span class="operator"> *</span>back<span class="operator">;</span><span class="keyword">
+
+	protected</span><span class="operator">:</span><span class="type">
+		void</span> AddIncBlock<span class="operator">(</span>std<span class="operator">::</span>string block_name<span class="operator">,</span> size_t start<span class="operator">);</span><span class="type">
+
+		void</span> DebugInc<span class="operator">();</span>
+		PROC_RETURN ProcInc<span class="operator">(</span>size_t block<span class="operator">,</span> size_t<span class="operator"> &amp;</span>inc<span class="operator">);</span><span class="type">
+
+		bool</span> IsVar<span class="operator">(</span>std<span class="operator">::</span>string<span class="operator"> &amp;</span>name<span class="operator">);</span>
+		std<span class="operator">::</span>string byteToString<span class="operator">(</span><span class="type">unsigned char</span> type<span class="operator">);</span>
+
+		std<span class="operator">::</span>string tokenTypeToString<span class="operator">(</span>TOK_TYPE t<span class="operator">);</span>
+		size_t i<span class="operator"> ,</span> cur_pos<span class="operator">;</span><span class="type">
+		bool</span> reg<span class="operator">[</span><span class="int">4</span><span class="operator">];</span><span class="comment">// flag registers
+
+</span>		std<span class="operator">::</span>string prev_op1<span class="operator">,</span>prev_op2<span class="operator">;</span>
+		std<span class="operator">::</span>map<span class="operator">&lt;</span>std<span class="operator">::</span>string<span class="operator">,</span> External_Callback<span class="operator">&gt;</span> callb<span class="operator">;</span>
+
+		std<span class="operator">::</span>map<span class="operator">&lt;</span>std<span class="operator">::</span>string<span class="operator">,</span>Code_Label<span class="operator">&gt;</span> labels<span class="operator">;</span>
+		std<span class="operator">::</span>map<span class="operator">&lt;</span>std<span class="operator">::</span>string<span class="operator">,</span>std<span class="operator">::</span>string<span class="operator">&gt;</span> obj<span class="operator">;</span><span class="keyword">
+
+		friend class</span> Parser<span class="operator">;
+	};</span><span class="keyword">
+	
+	inline</span><span class="type"> int</span> IdentToValue<span class="operator">(</span>std<span class="operator">::</span>string s<span class="operator">);</span><span class="keyword">
+
+	inline</span> BackEnd<span class="operator"> *</span>GetBend<span class="operator">() {</span><span class="flow"> return</span> BackEnd<span class="operator">::</span>back<span class="operator">; }
+
+}</span><span class="pre">
+
+
+#endif
+</span>
+</pre>
+</body>
+</html>

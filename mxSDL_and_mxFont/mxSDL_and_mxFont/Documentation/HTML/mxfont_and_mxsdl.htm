@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>What is mxFont && mxSDL</title>
+<meta name="GENERATOR" content="WinCHM">
+<meta http-equiv="Content-Type" content="text/html; charset= Windows-1252">
+
+</head>
+
+<body>
+<P><FONT face=Verdana size=2>mxFont 
+&amp;&amp; mxSDL are easy to use development librarys that use SDL (<A 
+href="http://libsdl.org">http://libsdl.org</A>) that incorperate OOP into SDL as 
+well as windows fonts. Since SDL dosent support any font functions by default. 
+(Of course there is SDL_ttf but that requires additional depdencys) all mxFont 
+requires is the SDL_font.h header file if your going to use plain old SDL, or 
+the mxSDL_font.h header file if your going to use my SDL wrapper as well as the 
+font files created with the font editor. You can create your own fonts, or rip 
+windows fonts and then use them in your SDL application or any graphical 
+application for that matter all you gotta do is change the SetPixel function in 
+SDL_font.h to plot a pixel for your API. Feel free to change the variable names, 
+to suit your style. The Font editor contains quite a number of tools , and the 
+ability to edit windows fonts and change them to suit your application. A mxf 
+font file is about 249 kb for a default windows font. Not to shabby if you ask 
+me. Heres a example of a SDL application displaying a mxf font. (BTW: you can 
+resize and change the color of the fonts on the fly so theres no need to reload 
+the data only reload the 
+font if your going to change specific 
+fonts.)</FONT></P>
+<P><STRONG>Example<BR></STRONG><STRONG><IMG 
+src="ss.jpg"><BR></STRONG></P></body>
+</html>

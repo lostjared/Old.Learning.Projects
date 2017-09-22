@@ -1,0 +1,22 @@
+; mas script
+; written by Jared Bruni
+; www.LostSideDead.com
+
+
+mas object {
+
+
+var {
+
+}
+
+begin {
+
+println "hello world"
+
+}
+
+
+}
+
+

@@ -1,0 +1,53 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: BallGame - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/Script1.res" /d "NDEBUG" "C:\Temp\mball\Script1.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPC343.TMP" with contents
+[
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/BallGame.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Temp\mball\game.cpp"
+"C:\Temp\mball\gameover.cpp"
+"C:\Temp\mball\intro.cpp"
+"C:\Temp\mball\mastermain.cpp"
+"C:\Temp\mball\Masterx.cpp"
+"C:\Temp\mball\options.cpp"
+"C:\Temp\mball\start.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPC343.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPC344.TMP" with contents
+[
+dxguid.lib ddraw.lib dsound.lib dinput.lib wsock32.lib winmm.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/BallGame.pdb" /machine:I386 /out:"Release/BallGame.exe" 
+.\Release\game.obj
+.\Release\gameover.obj
+.\Release\intro.obj
+.\Release\mastermain.obj
+.\Release\Masterx.obj
+.\Release\options.obj
+.\Release\start.obj
+.\Release\Script1.res
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPC344.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+game.cpp
+gameover.cpp
+intro.cpp
+mastermain.cpp
+Masterx.cpp
+options.cpp
+start.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+BallGame.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

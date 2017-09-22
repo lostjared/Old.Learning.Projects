@@ -1,0 +1,54 @@
+; here is a simple example 
+; of what I am working on
+
+
+mas object Jared { 
+
+
+variables {
+
+var# num1 ; the floating point variable to hold the first number (number)
+var# num2 ; the floating point to hold the second number
+var$ name ; the string to hold the users name
+var& hval:= FF ; unsigned long, using hex
+
+}
+
+constructor {
+
+println " welcome to this examplle of mas I wrote for web raiser "
+print " please enter your name: "
+iline name
+print "
+
+please enter the first digit: "
+iline num1
+print "
+
+please enter the second digit: "
+iline num2
+print "
+
+the equasion x * y = "
+mul num1,num2
+print num1
+print "
+
+... =) 0x"
+print hval
+println "
+
+Thats all for now"
+
+}
+
+
+deconstructor {
+
+
+
+}
+
+
+
+}

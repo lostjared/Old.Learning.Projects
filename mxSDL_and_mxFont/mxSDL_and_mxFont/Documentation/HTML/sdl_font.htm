@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>SDL_Font Example</title>
+<meta name="GENERATOR" content="WinCHM">
+<meta http-equiv="Content-Type" content="text/html; charset= Windows-1252">
+
+</head>
+
+<body>
+<P><FONT face=Verdana size=2>SDL_Font is a C++ addon for SDL 
+to allow you to display your windows and homebrewed fonts in SDL. Since SDL_ttf 
+requires a bunch of dependencys and I never could get any of it to work i wrote 
+my own. It includes&nbsp; C -style stream formated text&nbsp; and the ability to 
+stretch the font, and change its color Heres a example SDL program displaying a 
+Arial&nbsp; MXF font<BR><BR><IMG src="ss.jpg"> </FONT></P>
+<P><FONT face=Verdana size=2><BR>       
+              
+                 
+             
+           The source code 
+is the following.<BR><BR><BR><BODY BGCOLOR="#FFFFFF">
+<PRE><FONT COLOR="#000099">#include&lt;SDL.h&gt;
+#include "SDL_font.h"
+</FONT><FONT COLOR="#FF6633">
+int</FONT><FONT COLOR="#990000"> main</FONT><B><FONT COLOR="#663300">(</FONT></B><FONT COLOR="#FF6633">int</FONT> argc<B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#FF6633"> char</FONT><B><FONT COLOR="#663300"> **</FONT></B>argv<B><FONT COLOR="#663300">)  {</FONT></B>
+
+	SDL_Surface<B><FONT COLOR="#663300"> *</FONT></B>front<B><FONT COLOR="#663300">;</FONT></B>
+	SDL_Font    font<B><FONT COLOR="#663300">;</FONT></B>
+	atexit<B><FONT COLOR="#663300">(</FONT></B>SDL_Quit<B><FONT COLOR="#663300">);</FONT></B><FONT COLOR="#FF0000">
+
+	if</FONT><B><FONT COLOR="#663300">(</FONT></B>SDL_Init<B><FONT COLOR="#663300">(</FONT></B>SDL_INIT_VIDEO<B><FONT COLOR="#663300">) &lt;</FONT></B><FONT COLOR="#999900"> 0</FONT><B><FONT COLOR="#663300">) {</FONT></B>
+		std<B><FONT COLOR="#663300">::</FONT></B>cerr<B><FONT COLOR="#663300"> &lt;&lt;</FONT></B><FONT COLOR="#009900"> "Error Initalizing SDL!\n"</FONT><B><FONT COLOR="#663300">;</FONT></B><FONT COLOR="#FF0000">
+
+		return</FONT><FONT COLOR="#999900"> 0</FONT><B><FONT COLOR="#663300">;
+	}</FONT></B><FONT COLOR="#FF0000">
+
+	if</FONT><B><FONT COLOR="#663300">(!(</FONT></B>front<B><FONT COLOR="#663300"> =</FONT></B> SDL_SetVideoMode<B><FONT COLOR="#663300">(</FONT></B><FONT COLOR="#999900">640</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">480</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">0</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">0</FONT><B><FONT COLOR="#663300">))) {</FONT></B>
+
+		std<B><FONT COLOR="#663300">::</FONT></B>cerr<B><FONT COLOR="#663300"> &lt;&lt;</FONT></B><FONT COLOR="#009900"> "Error Setting Display Mode!\n"</FONT><B><FONT COLOR="#663300">;</FONT></B><FONT COLOR="#FF0000">
+		return</FONT><FONT COLOR="#999900"> 0</FONT><B><FONT COLOR="#663300">;
+	}</FONT></B><FONT COLOR="#FF0000">
+
+	if</FONT><B><FONT COLOR="#663300">(!(</FONT></B>SDL_read_font<B><FONT COLOR="#663300">(&amp;</FONT></B>font<B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#009900">"arial.mxf"</FONT><B><FONT COLOR="#663300">))) {</FONT></B>
+
+		std<B><FONT COLOR="#663300">::</FONT></B>cerr<B><FONT COLOR="#663300"> &lt;&lt;</FONT></B><FONT COLOR="#009900"> " Error reading font arial.mxf ! \n"</FONT><B><FONT COLOR="#663300">;</FONT></B><FONT COLOR="#FF0000">
+		return</FONT><FONT COLOR="#999900"> 0</FONT><B><FONT COLOR="#663300">;
+	}</FONT></B>
+
+	SDL_Event e<B><FONT COLOR="#663300">;</FONT></B><FONT COLOR="#FF6633">
+
+	bool</FONT> active<B><FONT COLOR="#663300"> =</FONT></B><B><FONT COLOR="#000000"> true</FONT></B><B><FONT COLOR="#663300">;</FONT></B><FONT COLOR="#FF0000">
+	while</FONT><B><FONT COLOR="#663300">(</FONT></B>active<B><FONT COLOR="#663300"> ==</FONT></B><B><FONT COLOR="#000000"> true</FONT></B><B><FONT COLOR="#663300">) {</FONT></B>
+
+		SDL_Rect rc<B><FONT COLOR="#663300"> = {</FONT></B><FONT COLOR="#999900"> 0</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">0</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">640</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">480</FONT><B><FONT COLOR="#663300"> };</FONT></B>
+		SDL_FillRect<B><FONT COLOR="#663300">(</FONT></B>front<B><FONT COLOR="#663300">, &amp;</FONT></B>rc<B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900"> 0x0</FONT><B><FONT COLOR="#663300">);</FONT></B>
+
+		SDL_PrintText<B><FONT COLOR="#663300">(</FONT></B>front<B><FONT COLOR="#663300">, &amp;</FONT></B>font<B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900"> 0</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">0</FONT><B><FONT COLOR="#663300">,</FONT></B>SDL_MapRGB<B><FONT COLOR="#663300">(</FONT></B>front<B><FONT COLOR="#663300">-&gt;</FONT></B>format<B><FONT COLOR="#663300">,</FONT></B> rand<B><FONT COLOR="#663300">()%</FONT></B><FONT COLOR="#999900">255</FONT><B><FONT COLOR="#663300">,</FONT></B> rand<B><FONT COLOR="#663300">()%</FONT></B><FONT COLOR="#999900">255</FONT><B><FONT COLOR="#663300">,</FONT></B> rand<B><FONT COLOR="#663300">()%</FONT></B><FONT COLOR="#999900">255</FONT><B><FONT COLOR="#663300">),</FONT></B><FONT COLOR="#009900"> "This is a test of the font \n function!\n =)"</FONT><B><FONT COLOR="#663300">);</FONT></B><FONT COLOR="#FF0000">
+
+		while</FONT><B><FONT COLOR="#663300">(</FONT></B>SDL_PollEvent<B><FONT COLOR="#663300">(&amp;</FONT></B>e<B><FONT COLOR="#663300">)) {</FONT></B><FONT COLOR="#FF0000">
+			switch</FONT><B><FONT COLOR="#663300">(</FONT></B>e<B><FONT COLOR="#663300">.</FONT></B>type<B><FONT COLOR="#663300">) {</FONT></B><FONT COLOR="#FF0000">
+				case</FONT> SDL_QUIT<B><FONT COLOR="#663300">:</FONT></B>
+
+					active<B><FONT COLOR="#663300"> =</FONT></B><B><FONT COLOR="#000000"> false</FONT></B><B><FONT COLOR="#663300">;</FONT></B><FONT COLOR="#FF0000">
+					break</FONT><B><FONT COLOR="#663300">;
+			}
+		}</FONT></B>
+		SDL_UpdateRect<B><FONT COLOR="#663300">(</FONT></B>front<B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">0</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">0</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">640</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">480</FONT><B><FONT COLOR="#663300">); 
+	}</FONT></B>
+
+	
+	SDL_FreeSurface<B><FONT COLOR="#663300">(</FONT></B>front<B><FONT COLOR="#663300">);</FONT></B><FONT COLOR="#FF0000">
+
+	return</FONT><FONT COLOR="#999900"> 0</FONT><B><FONT COLOR="#663300">;
+}</FONT></B></PRE>
+</BODY></P></FONT></body>
+</html>

@@ -1,0 +1,29 @@
+# Project: mxfont_example
+# Makefile created by Dev-C++ 4.9.9.1
+
+CPP  = g++.exe
+CC   = gcc.exe
+WINDRES = windres.exe
+RES  = 
+OBJ  = main.o $(RES)
+LINKOBJ  = main.o $(RES)
+LIBS =  -L"C:/Program Files/Common Files/GTK/2.0/LIB" -L"C:/Dev-Cpp/lib" -mwindows -lmingw32 -lSDLmain -lSDL -liberty 
+INCS =  -I"C:/Program Files/Common Files/GTK/2.0/INCLUDE"  -I"C:/Program Files/Common Files/GTK/2.0/INCLUDE/GTK-2.0"  -I"C:/Program Files/Common Files/GTK/2.0/INCLUDE/GLIB-2.0"  -I"C:/Program Files/Common Files/GTK/2.0/INCLUDE/PANGO-1.0"  -I"C:/Program Files/Common Files/GTK/2.0/INCLUDE/ATK-1.0"  -I"C:/Program Files/Common Files/GTK/2.0/INCLUDE/GTKGLEXT-1.0"  -I"C:/Program Files/Common Files/GTK/2.0/LIB/GTK-2.0/INCLUDE"  -I"C:/Program Files/Common Files/GTK/2.0/LIB/GLIB-2.0/INCLUDE"  -I"C:/Program Files/Common Files/GTK/2.0/LIB/GTKGLEXT-1.0/INCLUDE"  -I"C:/Program Files/Common Files/GTK/2.0/INCLUDE/LIBGLADE-2.0"  -I"C:/Program Files/Common Files/GTK/2.0/INCLUDE/LIBXML2"  -I"C:/Dev-Cpp/include" 
+CXXINCS =  -I"C:/Program Files/Common Files/GTK/2.0/INCLUDE"  -I"C:/Program Files/Common Files/GTK/2.0/INCLUDE/GTK-2.0"  -I"C:/Program Files/Common Files/GTK/2.0/INCLUDE/GLIB-2.0"  -I"C:/Program Files/Common Files/GTK/2.0/INCLUDE/PANGO-1.0"  -I"C:/Program Files/Common Files/GTK/2.0/INCLUDE/ATK-1.0"  -I"C:/Program Files/Common Files/GTK/2.0/INCLUDE/GTKGLEXT-1.0"  -I"C:/Program Files/Common Files/GTK/2.0/LIB/GTK-2.0/INCLUDE"  -I"C:/Program Files/Common Files/GTK/2.0/LIB/GLIB-2.0/INCLUDE"  -I"C:/Program Files/Common Files/GTK/2.0/LIB/GTKGLEXT-1.0/INCLUDE"  -I"C:/Program Files/Common Files/GTK/2.0/INCLUDE/LIBGLADE-2.0"  -I"C:/Program Files/Common Files/GTK/2.0/INCLUDE/LIBXML2"  -I"C:/Dev-Cpp/include/c++/3.3.1"  -I"C:/Dev-Cpp/include/c++/3.3.1/mingw32"  -I"C:/Dev-Cpp/include/c++/3.3.1/backward"  -I"C:/Dev-Cpp/lib/gcc-lib/mingw32/3.3.1/include"  -I"C:/Dev-Cpp/include" 
+BIN  = mxfont_example.exe
+CXXFLAGS = $(CXXINCS)  
+CFLAGS = $(INCS) -I"C:\Dev-Cpp\\include\SDL" -Dmain=SDL_main 
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before mxfont_example.exe all-after
+
+
+clean: clean-custom
+	rm -f $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "mxfont_example.exe" $(LIBS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)

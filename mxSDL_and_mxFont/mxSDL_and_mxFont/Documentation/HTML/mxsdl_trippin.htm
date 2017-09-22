@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>mxSDL Trippin</title>
+<meta name="GENERATOR" content="WinCHM">
+<meta http-equiv="Content-Type" content="text/html; charset= Windows-1252">
+
+</head>
+
+<body>
+<P><FONT face=Verdana size=2><STRONG>mxSDL: 
+Trippin</STRONG> <BR><BR>mxSDL: Trippin is a simple 
+program that does a software based alpha blend on two images I drew . These 
+images&nbsp;are&nbsp;Something I drew while under the Influence of LSD hehe 
+(SD<STRONG>L/SD</STRONG>L) The alpha blending does some neat effects heres a 
+sceen shot as well as the source code.<BR>These images are the most popular 
+downloads on my site, to check out the LostSideDead head's stats go to&nbsp; <A 
+href="http://lostsidedead.com/stats">http://lostsidedead.com/stats</A> </FONT></P>
+<P><FONT face=Verdana size=2><BR>&nbsp;</P></FONT>
+<P><FONT face=Verdana size=2><IMG src="sdl_alpha.jpg"><BR><BR></FONT></P><BODY BGCOLOR="#FFFFFF">
+<PRE><I><FONT COLOR="#999999">// Trippin a Pyschedelic Alpha blend effect
+// comment out the below line if not running in debug mode
+//#define MXDEBUG_MODE
+</FONT></I><FONT COLOR="#000099">#include "mxSDL.h"
+</FONT><FONT COLOR="#990000">
+class</FONT> Trippin<B><FONT COLOR="#663300"> :</FONT></B><FONT COLOR="#990000"> public</FONT> EventHandler<B><FONT COLOR="#663300"> {</FONT></B><FONT COLOR="#990000">
+
+public</FONT><B><FONT COLOR="#663300">:</FONT></B>
+
+	Trippin<B><FONT COLOR="#663300">() {</FONT></B><FONT COLOR="#FF0000">
+		if</FONT><B><FONT COLOR="#663300">(!(</FONT></B>lsd1<B><FONT COLOR="#663300">.</FONT></B>LoadBMP<B><FONT COLOR="#663300">(</FONT></B><FONT COLOR="#009900">"lsd.bmp"</FONT><B><FONT COLOR="#663300">)))</FONT></B><FONT COLOR="#FF0000">
+
+			throw</FONT> ErrorMsg<B><FONT COLOR="#663300">(</FONT></B><FONT COLOR="#009900">"Error Couldnt Load Bitmap lsd.bmp"</FONT><B><FONT COLOR="#663300">);</FONT></B><FONT COLOR="#FF0000">
+
+		if</FONT><B><FONT COLOR="#663300">(!(</FONT></B>lsd2<B><FONT COLOR="#663300">.</FONT></B>LoadBMP<B><FONT COLOR="#663300">(</FONT></B><FONT COLOR="#009900">"lsd2.bmp"</FONT><B><FONT COLOR="#663300">)))</FONT></B><FONT COLOR="#FF0000">
+
+			throw</FONT> ErrorMsg<B><FONT COLOR="#663300">(</FONT></B><FONT COLOR="#009900">"Error Couldnt Load Bitmap lsd2.bmp"</FONT><B><FONT COLOR="#663300">);</FONT></B><FONT COLOR="#FF0000">
+
+		if</FONT><B><FONT COLOR="#663300">(!(</FONT></B>arial<B><FONT COLOR="#663300">.</FONT></B>LoadFNT<B><FONT COLOR="#663300">(</FONT></B><FONT COLOR="#009900">"arial.mxf"</FONT><B><FONT COLOR="#663300">)))</FONT></B><FONT COLOR="#FF0000">
+
+			throw</FONT> ErrorMsg<B><FONT COLOR="#663300">(</FONT></B><FONT COLOR="#009900">"Error couldnt load mxFont arial.mxf"</FONT><B><FONT COLOR="#663300">);
+
+	}</FONT></B><FONT COLOR="#990000">
+
+	virtual</FONT><FONT COLOR="#FF6633"> void</FONT> Event<B><FONT COLOR="#663300">(</FONT></B>SDL_Event<B><FONT COLOR="#663300"> &amp;</FONT></B>e<B><FONT COLOR="#663300">) {
+
+	}</FONT></B><FONT COLOR="#990000">
+
+	virtual</FONT><FONT COLOR="#FF6633"> void</FONT> KeyDown<B><FONT COLOR="#663300">(</FONT></B><FONT COLOR="#FF6633">int</FONT> key<B><FONT COLOR="#663300">) {</FONT></B><FONT COLOR="#FF0000">
+		switch</FONT><B><FONT COLOR="#663300">(</FONT></B>key<B><FONT COLOR="#663300">) {</FONT></B><FONT COLOR="#FF0000">
+
+			case</FONT> SDLK_ESCAPE<B><FONT COLOR="#663300">:</FONT></B>
+				mx<B><FONT COLOR="#663300">-&gt;</FONT></B>Quit<B><FONT COLOR="#663300">();</FONT></B><FONT COLOR="#FF0000">
+				break</FONT><B><FONT COLOR="#663300">;
+		}
+	
+	}</FONT></B><FONT COLOR="#990000">
+	virtual</FONT><FONT COLOR="#FF6633"> void</FONT> KeyUp<B><FONT COLOR="#663300">(</FONT></B><FONT COLOR="#FF6633">int</FONT> key<B><FONT COLOR="#663300">) {
+	
+	}</FONT></B><FONT COLOR="#990000">
+
+	virtual</FONT><FONT COLOR="#FF6633"> void</FONT> Render<B><FONT COLOR="#663300">() {</FONT></B><FONT COLOR="#990000">
+		static</FONT><FONT COLOR="#FF6633"> float</FONT> blend_state<B><FONT COLOR="#663300"> =</FONT></B><FONT COLOR="#996600"> 1.0f</FONT><B><FONT COLOR="#663300">;</FONT></B>
+
+		mx<B><FONT COLOR="#663300">-&gt;</FONT></B>AlphaBlend<B><FONT COLOR="#663300">(&amp;</FONT></B>lsd1<B><FONT COLOR="#663300">, &amp;</FONT></B>lsd2<B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900"> 0</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">0</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">640</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">480</FONT><B><FONT COLOR="#663300">,</FONT></B> blend_state<B><FONT COLOR="#663300">);</FONT></B>
+
+		blend_state<B><FONT COLOR="#663300"> +=</FONT></B><FONT COLOR="#996600"> 0.1f</FONT><B><FONT COLOR="#663300">;</FONT></B>
+		mx<B><FONT COLOR="#663300">-&gt;</FONT></B>PrintTextSized<B><FONT COLOR="#663300">(</FONT></B>arial<B><FONT COLOR="#663300">.</FONT></B>GetFont<B><FONT COLOR="#663300">(),</FONT></B><FONT COLOR="#999900">0</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">0</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">25</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">25</FONT><B><FONT COLOR="#663300">,</FONT></B>mxRGB<B><FONT COLOR="#663300">(</FONT></B>mx<B><FONT COLOR="#663300">-&gt;</FONT></B>GetFront<B><FONT COLOR="#663300">(),</FONT></B><FONT COLOR="#999900"> 0</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">0</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">0</FONT><B><FONT COLOR="#663300">),</FONT></B><FONT COLOR="#009900">"Alpha State %f\n Cursor Pos (%d, %d)"</FONT><B><FONT COLOR="#663300">,</FONT></B> blend_state<B><FONT COLOR="#663300">,</FONT></B> mx<B><FONT COLOR="#663300">-&gt;</FONT></B>mouse_x<B><FONT COLOR="#663300">,</FONT></B> mx<B><FONT COLOR="#663300">-&gt;</FONT></B>mouse_y<B><FONT COLOR="#663300">);
+	}</FONT></B><FONT COLOR="#990000">
+
+protected</FONT><B><FONT COLOR="#663300">:</FONT></B>
+	mxSurface lsd1<B><FONT COLOR="#663300">,</FONT></B> lsd2<B><FONT COLOR="#663300">;</FONT></B>
+	mxText arial<B><FONT COLOR="#663300">;
+};</FONT></B><FONT COLOR="#FF6633">
+
+
+
+int</FONT><FONT COLOR="#990000"> main</FONT><B><FONT COLOR="#663300">(</FONT></B><FONT COLOR="#FF6633">int</FONT> argc<B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#FF6633"> char</FONT><B><FONT COLOR="#663300"> **</FONT></B>argv<B><FONT COLOR="#663300">) {</FONT></B><FONT COLOR="#FF0000">
+	try</FONT><B><FONT COLOR="#663300"> {</FONT></B>
+
+		mxSDL mxsdl<B><FONT COLOR="#663300">(</FONT></B><FONT COLOR="#009900">"Trippin Alpha Blend"</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900"> 640</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900">480</FONT><B><FONT COLOR="#663300">,</FONT></B><FONT COLOR="#999900"> 0</FONT><B><FONT COLOR="#663300">,</FONT></B><B><FONT COLOR="#000000"> false</FONT></B><B><FONT COLOR="#663300">);</FONT></B>
+
+		mxsdl<B><FONT COLOR="#663300">.</FONT></B>SetEvents<B><FONT COLOR="#663300">(</FONT></B><FONT COLOR="#990000"> new</FONT> Trippin<B><FONT COLOR="#663300"> );</FONT></B>
+		mxsdl<B><FONT COLOR="#663300">.</FONT></B>MessagePump<B><FONT COLOR="#663300">();
+	}</FONT></B><FONT COLOR="#FF0000">
+
+	catch</FONT><B><FONT COLOR="#663300"> (</FONT></B>ErrorMsg<B><FONT COLOR="#663300"> &amp;</FONT></B>e<B><FONT COLOR="#663300">) {</FONT></B>
+		e<B><FONT COLOR="#663300">.</FONT></B>PrintLastError<B><FONT COLOR="#663300">();
+	}</FONT></B><FONT COLOR="#FF0000">
+	return</FONT><FONT COLOR="#999900"> 0</FONT><B><FONT COLOR="#663300">;
+}</FONT></B>
+
+</PRE>
+</BODY></BODY>
+</html>

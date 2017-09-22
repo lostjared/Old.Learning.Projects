@@ -1,0 +1,36 @@
+
+
+; masasm average script
+; written by jared bruni
+
+mas average {
+
+var {
+
+var# total := 0
+var# amount := 0
+var# index := 0
+
+}
+
+begin {
+start:
+print "enter a number (-1) to get its average: "
+input index
+cmp index,-1
+je over
+add total,index
+inc amount
+jne start
+over:
+div total,amount
+print "\nthe average is "
+print total
+print "\n"
+}
+
+
+}
+
+
+

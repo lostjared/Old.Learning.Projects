@@ -1,0 +1,63 @@
+
+
+mas Math {
+
+var {
+
+var& x := 10
+var& y := 10
+
+
+}
+
+begin {
+
+print x
+print "+"
+print y
+add x,y
+print "="
+print x
+addx:
+print "\ninput a number input -1 to stop inputing:"
+input y
+cmp y,-1
+je over
+print x
+print "+"
+print y
+print "="
+add x,y
+print x
+jne addx
+over:
+print "\n input a number to xor "
+print x
+print " by: "
+input y
+xor x,y
+print "\n value of xor is: " 
+print x
+print "\n input another number to xor by: "
+input y
+xor x,y
+print "\n"
+print x
+or x,y
+print "\nvalue of x after or: "
+print x
+and x,y
+print "\nvalue of x after and: "
+print x
+print "\n"
+
+}
+
+
+}
+
+
+
+
+
+

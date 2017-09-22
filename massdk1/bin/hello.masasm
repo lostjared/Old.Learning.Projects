@@ -1,0 +1,28 @@
+
+; hello world in masasm
+
+
+mas object jared {
+
+variables {
+
+var$ str
+var& x := 10
+var$ str2
+
+} 
+
+constructor {
+
+
+println "test"
+
+
+}
+
+
+deconstructor {
+
+}
+ 
+}

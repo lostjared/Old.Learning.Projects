@@ -1,0 +1,64 @@
+<HTML><FONT FACE="FIXEDSYS" COLOR="#BD0000">masasm assembler debug output, written by Jared Bruni<br><br>
+
+<a href="http://www.lostsidedead.com">www.lostsidedead.com</a><br>
+
+
+<br><br><font color="green">variable list</font><br>
+
+<br>variable name: <font color="blue">con0</font>  value (<font color="purple"> µwelcomeµtoµthisµexamplleµofµmasµiµwroteµforµwebµraiserµ </font> ) 
+<br><br>variable name: <font color="blue">con1</font>  value (<font color="purple"> µpleaseµenterµyourµname:µ </font> ) 
+<br><br>variable name: <font color="blue">con2</font>  value (<font color="purple"> ¶¶pleaseµenterµtheµfirstµdigit:µ </font> ) 
+<br><br>variable name: <font color="blue">con3</font>  value (<font color="purple"> ¶¶pleaseµenterµtheµsecondµdigit:µ </font> ) 
+<br><br>variable name: <font color="blue">con4</font>  value (<font color="purple"> ¶¶theµequasionµxµ*µyµ=µ </font> ) 
+<br><br>variable name: <font color="blue">con5</font>  value (<font color="purple"> ¶¶...µ=)µ0x </font> ) 
+<br><br>variable name: <font color="blue">con6</font>  value (<font color="purple"> ¶¶thatsµallµforµnow </font> ) 
+<br><br>variable name: <font color="blue">num1</font>  value (<font color="purple"> (null) </font> ) 
+<br><br>variable name: <font color="blue">num2</font>  value (<font color="purple"> (null) </font> ) 
+<br><br>variable name: <font color="blue">name</font>  value (<font color="purple"> (null) </font> ) 
+<br><br>variable name: <font color="blue">hval</font>  value (<font color="purple"> ff </font> ) 
+<br>
+<br><br><font color="green">code blocks</font><br><br>
+
+
+<br>code block (proc/con/var) <font color="blue">variables </font>
+<br>{<br>
+
+
+var# num1 
+var# num2 
+var$ name 
+var& hval:= ff 
+
+
+<br>}<br>
+
+<br>code block (proc/con/var) <font color="blue">constructor </font>
+<br>{<br>
+
+
+println "µwelcomeµtoµthisµexamplleµofµmasµiµwroteµforµwebµraiserµ"
+print "µpleaseµenterµyourµname:µ"
+iline name
+print "¶¶pleaseµenterµtheµfirstµdigit:µ"
+iline num1
+print "¶¶pleaseµenterµtheµsecondµdigit:µ"
+iline num2
+print "¶¶theµequasionµxµ*µyµ=µ"
+mul num1,num2
+print num1
+print "¶¶...µ=)µ0x"
+print hval
+println "¶¶thatsµallµforµnow"
+
+
+<br>}<br>
+
+<br>code block (proc/con/var) <font color="blue">deconstructor </font>
+<br>{<br>
+
+
+
+
+
+<br>}<br>
+</FONT></HTML>

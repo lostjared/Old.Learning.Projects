@@ -1,0 +1,3 @@
+SDL Surface Created 1625a28
+Successfully initalized
+Quit called!

@@ -1,0 +1,12 @@
+mas file {
+var { var$ file_name = ""; var$ buffer = ""; var$ char = ""; }
+
+begin { }
+end { }
+
+extern proc read;
+extern proc write;
+extern proc bread;
+
+}
+

@@ -1,0 +1,10 @@
+To build and install:
+
+for your current OS:
+
+make install
+
+for PSP
+
+make -f pspmake install
+

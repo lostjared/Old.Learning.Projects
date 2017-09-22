@@ -1,0 +1,160 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "File"
+    BEGIN
+        MENUITEM "Create a New Level",          ID_FILENEW
+        MENUITEM SEPARATOR
+        MENUITEM "Load Exisiting Level",        ID_FILELOAD
+        MENUITEM "Save ",                       ID_FILESAVE
+        MENUITEM "Save As..",                   ID_FILESAVEAS
+        MENUITEM "Compile Ru&nable Level",      ID_FILECOMPILE
+        MENUITEM SEPARATOR
+        MENUITEM "Exit",                        ID_FILEEXIT
+    END
+    POPUP "Project"
+    BEGIN
+        MENUITEM "Edit Layout Code",            ID_EDITCODE
+        MENUITEM "Edit Introduction",           ID_EDITINTRO
+        MENUITEM "Edit Conclusion",             ID_EDIT
+        MENUITEM "Edit String/Variable List",   ID_EDITSTRINGLIST
+    END
+    POPUP "Layer"
+    BEGIN
+        MENUITEM "Edit Background Layer Properties", ID_LAYERBG
+        MENUITEM "Edit Item Layer Properties",  ID_LAYERITEM
+        MENUITEM "Enemey Layer Properties",     ID_LAYERENEMY
+    END
+    POPUP "Image"
+    BEGIN
+        MENUITEM "Image Resource Editor",       ID_IMAGEEDITOR
+    END
+    POPUP "Screen"
+    BEGIN
+        MENUITEM "Screen Left",                 ID_SCRLEFT
+        MENUITEM "Screen Right",                ID_SCRRIGHT
+        MENUITEM SEPARATOR
+        MENUITEM "Refresh",                     ID_SCRREFRESH
+    END
+    POPUP "Object"
+    BEGIN
+        MENUITEM "Level Object Editor",         ID_OBJECTVIEW
+        MENUITEM SEPARATOR
+        MENUITEM "Create Background Object",    ID_OBJECTCRBG
+        MENUITEM "Create Item Object",          ID_OBJECTITOB
+        MENUITEM "Create Enemey Item",          ID_OBJECTEN
+    END
+    POPUP "Logic"
+    BEGIN
+        MENUITEM "Keyscans",                    ID_LOGICKEYTRIP
+        MENUITEM "Script Editor",               ID_LOGIC
+        MENUITEM "Rect Clip Triggers",          ID_LOGIC
+    END
+    POPUP "Help"
+    BEGIN
+        MENUITEM "Online Help",                 ID_ONLINEHELP
+        MENUITEM SEPARATOR
+        MENUITEM "About",                       ID_HELPABOUT
+    END
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON    DISCARDABLE     "icon1.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP  DISCARDABLE     "imsg\\lost.bmp"
+IDB_BITMAP3             BITMAP  DISCARDABLE     "imsg\\tool1_up.bmp"
+IDB_BITMAP4             BITMAP  DISCARDABLE     "imsg\\tool1_down.bmp"
+IDB_BITMAP5             BITMAP  DISCARDABLE     "imsg\\tool2_up.bmp"
+IDB_BITMAP6             BITMAP  DISCARDABLE     "imsg\\tool2_down.bmp"
+IDB_BITMAP7             BITMAP  DISCARDABLE     "brick.bmp"
+IDB_BITMAP8             BITMAP  DISCARDABLE     "imsg\\tool3_up.bmp"
+IDB_BITMAP9             BITMAP  DISCARDABLE     "imsg\\tool3_down.bmp"
+IDB_BITMAP10            BITMAP  DISCARDABLE     "imsg\\tool4_up.bmp"
+IDB_BITMAP11            BITMAP  DISCARDABLE     "imsg\\tool4_down.bmp"
+IDB_BITMAP12            BITMAP  DISCARDABLE     "imsg\\tool5_up.bmp"
+IDB_BITMAP13            BITMAP  DISCARDABLE     "imsg\\tool5_down.bmp"
+IDB_BITMAP14            BITMAP  DISCARDABLE     "imsg\\tool6_up.bmp"
+IDB_BITMAP15            BITMAP  DISCARDABLE     "imsg\\tool6_down.bmp"
+IDB_BITMAP2             BITMAP  DISCARDABLE     "imsg\\intro.bmp"
+IDB_BITMAP16            BITMAP  DISCARDABLE     "imsg\\bitmap16.bmp"
+IDB_BITMAP17            BITMAP  DISCARDABLE     "imsg\\about.bmp"
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

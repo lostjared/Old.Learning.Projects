@@ -1,0 +1,35 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MasterXSkinner - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/Script1.res" /d "NDEBUG" "C:\MasterXSkinner\Script1.rc"" 
+Creating temporary file "c:\windows\TEMP\RSPB0D4.TMP" with contents
+[
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/MasterXSkinner.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\MasterXSkinner\mxskin.cpp"
+]
+Creating command line "cl.exe @c:\windows\TEMP\RSPB0D4.TMP" 
+Creating temporary file "c:\windows\TEMP\RSPB0D5.TMP" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/MasterXSkinner.pdb" /machine:I386 /out:"Release/MasterXSkinner.exe" 
+.\Release\mxskin.obj
+.\Release\Script1.res
+]
+Creating command line "link.exe @c:\windows\TEMP\RSPB0D5.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+mxskin.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+MasterXSkinner.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

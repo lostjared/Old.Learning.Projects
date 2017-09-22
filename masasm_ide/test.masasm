@@ -1,0 +1,87 @@
+
+; masasm script
+; written by jared bruni
+
+mas object {
+
+var {
+
+var& x := 0
+var$ name
+var& addx := 0
+var& addy := 0
+var& addz := 0
+
+}
+
+begin {
+
+mov x,0
+start:
+print "hello world\nwelcome to the demo mas application\n"
+print "enter your name: "
+input name
+print "\nHello "
+print name
+print "\n"
+print "now were going to loop 10 times and print out the index of the loop\n"
+loop:
+print "loop("
+print x
+print ")\n"
+cmp x,10
+inc x
+jne loop
+print "\nenter a number: "
+input addx
+print "\nenter another number: "
+input addy
+print addx
+print "+"
+print addy
+print "="
+add addx,addy
+print addx
+print "\n"
+addone:
+print "input a number: "
+input addz
+cmp addz,-1
+je over
+print addx
+print "+"
+print addz
+add addx,addz
+print "="
+print addx
+print "\n"
+jne addone
+over:
+or addx,addz
+mov addx, 1
+mov addy, 1
+and addx,addy
+print "result of addx is: "
+print addx
+not addx
+print "\nthe value of addx after the not instruction is: "
+print addx
+push 10
+push 20
+push 30
+pop addx
+pop addy
+pop addz
+print "\n the value of of addy is : "
+print addy
+
+}
+
+
+}
+
+
+
+
+
+

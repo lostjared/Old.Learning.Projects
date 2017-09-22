@@ -1,0 +1,50 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MasterRPG - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/Script1.res" /d "NDEBUG" "C:\Temp\mrpg\Script1.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP30D6.TMP" with contents
+[
+/nologo /ML /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/MasterRPG.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Temp\mrpg\Game.cpp"
+"C:\Temp\mrpg\Hero.cpp"
+"C:\Temp\mrpg\Intro.cpp"
+"C:\Temp\mrpg\MasterConsole.cpp"
+"C:\Temp\mrpg\MasterMain.cpp"
+"C:\Temp\mrpg\Masterx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP30D6.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP30D7.TMP" with contents
+[
+wsock32.lib ddraw.lib dsound.lib dinput.lib dxguid.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/MasterRPG.pdb" /machine:I386 /out:"Release/MasterRPG.exe" 
+.\Release\Game.obj
+.\Release\Hero.obj
+.\Release\Intro.obj
+.\Release\MasterConsole.obj
+.\Release\MasterMain.obj
+.\Release\Masterx.obj
+.\Release\Script1.res
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP30D7.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+Game.cpp
+Hero.cpp
+Intro.cpp
+MasterConsole.cpp
+MasterMain.cpp
+Masterx.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+MasterRPG.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,16 @@
+
+#insert "console.msrc";
+master MyProg {
+uses {console;}
+
+var { var$ str = "Hello "; }
+
+begin {
+print << master.str << " World\n";
+}
+
+end {
+print << "Goodbye World\n";
+call console.pause;
+}
+}

@@ -1,0 +1,4 @@
+echo written by Jared Bruni
+echo this is a simple batch file
+echo hehe :)
+pause

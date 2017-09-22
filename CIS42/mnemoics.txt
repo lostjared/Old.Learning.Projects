@@ -1,0 +1,39 @@
+
+menomics
+
+loadm register,xy  ; 1 0
+load  register,val ; 2 1
+store register,xy  ; 3 2
+mov  register,register ; 4 3
+add   register,register ; 5 4
+sub   register,register ; 6 5
+mul   register,register; 7 6
+div   register,register ; 8 7
+inc   register,register ; 9 8
+dec   register,register ; 10 9
+or    register,register ; 11 A
+xor   register,register ; 11 B
+and   register,register ; 12 C
+rotate register,register ; 13 D
+halt   ; 15 E
+
+
+registers (15 registers)
+
+ax 0
+bx 1
+cx 2
+dx 3
+ex 4
+fx 5
+gx 6
+hx 7
+ix 8
+jx 9
+kx 10
+lx 11
+mx 12
+nx 13
+ox 14
+px 15
+

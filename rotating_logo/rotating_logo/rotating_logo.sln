@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "rotating_logo", "rotating_logo.vcproj", "{AB32D7FC-FBA5-4E55-8026-A8F27966ACE1}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{AB32D7FC-FBA5-4E55-8026-A8F27966ACE1}.Debug.ActiveCfg = Debug|Win32
+		{AB32D7FC-FBA5-4E55-8026-A8F27966ACE1}.Debug.Build.0 = Debug|Win32
+		{AB32D7FC-FBA5-4E55-8026-A8F27966ACE1}.Release.ActiveCfg = Release|Win32
+		{AB32D7FC-FBA5-4E55-8026-A8F27966ACE1}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

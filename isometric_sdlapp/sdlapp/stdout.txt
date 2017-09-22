@@ -1,0 +1,3 @@
+SDL Surface Created a64f70
+Successfully initalized
+Quit called!

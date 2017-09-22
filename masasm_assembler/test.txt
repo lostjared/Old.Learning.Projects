@@ -1,0 +1,72 @@
+;<*
+
+;Mas Asm Comment
+
+;*>
+
+
+
+mas object Jared {
+
+
+variables {
+
+var# pay ; pay amount
+var# rate ; the rate
+var# hours ; the hours
+var$ name ; the persons name
+
+
+}
+
+types {
+
+
+}
+
+
+constructor {
+ 
+
+ 
+
+println " welcome to a simple application written in mas "
+print " please enter your name: "
+iline name
+print "
+
+welcome "
+print name
+print "
+
+please enter your hours worked: "
+iline hours
+print "
+please enter your rate: "
+iline rate
+print "
+
+your pay is: $"
+ 
+mov pay,rate
+mul pay,hours
+
+print pay
+
+
+
+
+println " 
+
+goodbye !"
+
+
+}
+
+
+deconstructor {
+
+
+}
+
+}

@@ -1,0 +1,42 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: TileMap - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSP6192.TMP" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/TileMap.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\TileMap\Game.cpp"
+"C:\TileMap\Intro.cpp"
+"C:\TileMap\MasterMain.cpp"
+"C:\TileMap\TileMap.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP6192.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP6193.TMP" with contents
+[
+ddraw.lib dsound.lib dinput.lib dxguid.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/TileMap.pdb" /debug /machine:I386 /out:"Debug/TileMap.exe" /pdbtype:sept 
+.\Debug\Game.obj
+.\Debug\Intro.obj
+.\Debug\MasterMain.obj
+.\Debug\MasterX.obj
+.\Debug\TileMap.obj
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP6193.TMP"
+<h3>Output Window</h3>
+Compiling...
+Game.cpp
+TileMap.cpp
+Intro.cpp
+MasterMain.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+TileMap.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

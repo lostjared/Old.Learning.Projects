@@ -1,0 +1,9 @@
+ to build
+
+requires:
+libmxf
+SDL
+
+
+LDFLAGS="`sdl-config --libs -lmxf`" CPPFLAGS="`sdl-config --cflags`" ./configure
+make

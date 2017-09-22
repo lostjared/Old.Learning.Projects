@@ -1,0 +1,94 @@
+<html>
+<style>
+body
+{
+   font-family: verdana;
+   font-size: 15px;
+   color: black;
+}
+
+B
+{
+   font-family: verdana;
+   font-size: 11px;
+}
+
+table
+{
+   font-family: verdana;
+   font-size: 15px;
+   color: black;
+}
+
+pre.C_CPP_file
+{
+   background-color: silver;
+   color: black;
+   border-bottom: black 1px solid;
+   border-left: black 1px solid;
+   border-right: black 1px solid;
+   border-top: black 1px solid;
+   margin-left: auto;
+   margin-right: auto;
+   padding-bottom; 3px;
+   padding-left: 3px;
+   padding-right: 3px;
+   padding-top: 3px;
+   font-family: courier;
+   font-size: 9pt;
+   text-align: left;
+}
+</style>
+</head>
+<body bgcolor=#FFFFFF text=#000000 link=#888888 alink=#888888 vlink=#888888>
+<pre class=C_CPP_file>
+<font color="#c300c3">#include </font><font color="#ff00bf">"mx3d.h"</font>
+
+<font color="#553399"><b>class</font></b> Example <font size=3 color="#333399">:</font> <font color="#553399"><b>public</font></b> mxApp <font size=3 color="#333399">{</font>
+
+<font color="#553399"><b>public</font></b><font size=3 color="#333399">:</font>
+	Example<font size=3 color="#333399">(</font><font size=3 color="#333399">)</font> <font size=3 color="#333399">{</font>
+		init<font size=3 color="#333399">(</font><font size=3 color="#333399">)</font><font size=3 color="#333399">;</font>
+	<font size=3 color="#333399">}</font>
+
+	<font color="#553399"><b>virtual</font></b> <font color="#553399"><b>void</font></b> init<font size=3 color="#333399">(</font><font size=3 color="#333399">)</font> <font size=3 color="#333399">{</font>
+		<font color="#553399"><b>if</font></b><font size=3 color="#333399">(</font>Init<font size=3 color="#333399">(</font><font color="#ff00bf">"Mx3d"</font><font size=3 color="#333399">,</font><font color="#553399"><b>false</font></b><font size=3 color="#333399">,</font>CW_USEDEFAULT<font size=3 color="#333399">,</font>CW_USEDEFAULT<font size=3 color="#333399">,</font><font color="c30000"><b>640</font></b><font size=3 color="#333399">,</font><font color="c30000"><b>480</font></b><font size=3 color="#333399">,</font>WndProc<font size=3 color="#333399">,</font>LoadIcon<font size=3 color="#333399">(</font>NULL<font size=3 color="#333399">,</font>IDI_APPLICATION<font size=3 color="#333399">)</font><font size=3 color="#333399">)</font><font size=3 color="#333399">)</font> <font size=3 color="#333399">{</font>
+			<font color="#553399"><b>if</font></b><font size=3 color="#333399">(</font>InitDX<font size=3 color="#333399">(</font><font color="#553399"><b>false</font></b><font size=3 color="#333399">,</font><font color="c30000"><b>24</font></b><font size=3 color="#333399">)</font><font size=3 color="#333399">)</font> <font size=3 color="#333399">{</font>
+				InitLoop<font size=3 color="#333399">(</font><font size=3 color="#333399">)</font><font size=3 color="#333399">;</font>
+			<font size=3 color="#333399">}</font>
+		<font size=3 color="#333399">}</font>
+		<font color="#553399"><b>else</font></b>
+			ErrorMsg<font size=3 color="#333399">(</font><font color="#ff00bf">"Couldnt initalize DirectX 9\n"</font><font size=3 color="#333399">)</font><font size=3 color="#333399">;</font>
+	<font size=3 color="#333399">}</font>
+
+	<font color="#553399"><b>virtual</font></b> <font color="#553399"><b>void</font></b> render<font size=3 color="#333399">(</font><font color="#553399"><b>int</font></b> screen<font size=3 color="#333399">)</font> <font size=3 color="#333399">{</font>
+		text<font size=3 color="#333399">.</font>printtextf<font size=3 color="#333399">(</font><font color="c30000"><b>10</font></b><font size=3 color="#333399">,</font><font color="c30000"><b>10</font></b><font size=3 color="#333399">,</font><font color="#ff00bf">"Hello World"</font><font size=3 color="#333399">)</font><font size=3 color="#333399">;</font>
+	<font size=3 color="#333399">}</font>
+
+	<font color="#553399"><b>static</font></b> LRESULT CALLBACK WndProc<font size=3 color="#333399">(</font>HWND hwnd<font size=3 color="#333399">,</font> UINT msg<font size=3 color="#333399">,</font>WPARAM wParam<font size=3 color="#333399">,</font> LPARAM lParam<font size=3 color="#333399">)</font> <font size=3 color="#333399">{</font>
+		<font color="#553399"><b>switch</font></b><font size=3 color="#333399">(</font>msg<font size=3 color="#333399">)</font> <font size=3 color="#333399">{</font>
+			<font color="#553399"><b>case</font></b> WM_ACTIVATEAPP<font size=3 color="#333399">:</font>
+				example<font size=3 color="#333399">.</font>active <font size=3 color="#333399">=</font> wParam<font size=3 color="#333399">;</font>
+				<font color="#553399"><b>break</font></b><font size=3 color="#333399">;</font>
+			<font color="#553399"><b>case</font></b> WM_DESTROY<font size=3 color="#333399">:</font>
+				PostQuitMessage<font size=3 color="#333399">(</font><font color="c30000"><b>0</font></b><font size=3 color="#333399">)</font><font size=3 color="#333399">;</font>
+				<font color="#553399"><b>break</font></b><font size=3 color="#333399">;</font>
+		<font size=3 color="#333399">}</font>
+
+		<font color="#553399"><b>return</font></b> DefWindowProc<font size=3 color="#333399">(</font>hwnd<font size=3 color="#333399">,</font>msg<font size=3 color="#333399">,</font>wParam<font size=3 color="#333399">,</font>lParam<font size=3 color="#333399">)</font><font size=3 color="#333399">;</font>
+	<font size=3 color="#333399">}</font>
+
+	<font color="#553399"><b>static</font></b> Example example<font size=3 color="#333399">;</font>
+<font size=3 color="#333399">}</font><font size=3 color="#333399">;</font>
+
+Example Example<font size=3 color="#333399">:</font><font size=3 color="#333399">:</font>example<font size=3 color="#333399">;</font>
+
+<font color="#007766">// only needed for compatiblity sakes
+</font>
+<font color="#553399"><b>int</font></b> PASCAL WinMain<font size=3 color="#333399">(</font>HINSTANCE hInst<font size=3 color="#333399">,</font> HINSTANCE hPrev<font size=3 color="#333399">,</font> LPSTR lpszLine<font size=3 color="#333399">,</font> <font color="#553399"><b>int</font></b> nCmdShow<font size=3 color="#333399">)</font> <font size=3 color="#333399">{</font>
+	<font color="#553399"><b>return</font></b> <font color="c30000"><b>0</font></b><font size=3 color="#333399">;</font>
+<font size=3 color="#333399">}</font>
+</pre>
+</center>
+</body>
+</html>

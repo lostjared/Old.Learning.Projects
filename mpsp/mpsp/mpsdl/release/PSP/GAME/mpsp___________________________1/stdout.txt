@@ -1,0 +1,2 @@
+SDL Surface Created 8949d30
+Successfully initalized

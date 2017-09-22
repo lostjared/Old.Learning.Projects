@@ -1,0 +1,18 @@
+
+insert "file.msrc";
+
+mas console {
+
+var { var$ buffer = ""; }
+
+begin {} // no need for begin end blocks here
+
+end {} 
+
+extern proc clear;
+extern proc pause;
+extern proc input;
+extern proc output;
+extern proc flush;
+
+}

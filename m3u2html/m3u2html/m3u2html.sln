@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "m3u2html", "m3u2html\m3u2html.vcproj", "{4B4A8834-AEC3-405E-AECC-ABCD793CACFC}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{4B4A8834-AEC3-405E-AECC-ABCD793CACFC}.Debug.ActiveCfg = Debug|Win32
+		{4B4A8834-AEC3-405E-AECC-ABCD793CACFC}.Debug.Build.0 = Debug|Win32
+		{4B4A8834-AEC3-405E-AECC-ABCD793CACFC}.Release.ActiveCfg = Release|Win32
+		{4B4A8834-AEC3-405E-AECC-ABCD793CACFC}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

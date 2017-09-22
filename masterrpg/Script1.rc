@@ -1,0 +1,113 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU1 MENU DISCARDABLE 
+BEGIN
+    POPUP "File"
+    BEGIN
+        MENUITEM "&New",                        ID_FILENEW
+        MENUITEM SEPARATOR
+        MENUITEM "Load Exisiting Map",          ID_FILELOAD
+        MENUITEM "Save ",                       ID_FILESAVE
+        MENUITEM "Save As...",                  ID_FILESAVEAS
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_FILEEXIT
+    END
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP  DISCARDABLE     "grass.bmp"
+IDB_BITMAP2             BITMAP  DISCARDABLE     "stone.bmp"
+IDB_BITMAP3             BITMAP  DISCARDABLE     "gray_brick.bmp"
+IDB_BITMAP4             BITMAP  DISCARDABLE     "stone3.bmp"
+IDB_BITMAP5             BITMAP  DISCARDABLE     "stone4.bmp"
+IDB_BITMAP6             BITMAP  DISCARDABLE     "sand1.bmp"
+IDB_BITMAP7             BITMAP  DISCARDABLE     "sand2.bmp"
+IDB_BITMAP8             BITMAP  DISCARDABLE     "snow.bmp"
+IDB_BITMAP9             BITMAP  DISCARDABLE     "water1.bmp"
+IDB_BITMAP10            BITMAP  DISCARDABLE     "water2.bmp"
+IDB_BITMAP11            BITMAP  DISCARDABLE     "blacksky.bmp"
+IDB_BITMAP12            BITMAP  DISCARDABLE     "bluesky.bmp"
+IDB_BITMAP13            BITMAP  DISCARDABLE     "stone2.bmp"
+IDB_BITMAP14            BITMAP  DISCARDABLE     "red_brick.bmp"
+IDB_BITMAP15            BITMAP  DISCARDABLE     "blue_brick.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ICON1               ICON    DISCARDABLE     "icon1.ico"
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

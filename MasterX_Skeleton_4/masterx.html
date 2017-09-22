@@ -1,0 +1,57 @@
+<HTML>
+<body>
+<font face="FixedSys" color="#BD0000">
+
+<center> <u><b>MasterX SDK</u></b></center><br><br>
+<b>Compatibility</b><br><br>
+-  DirectX7 or less, new directX8 based library sometime in the future.
+
+This article is a explanation of the MasterX SDK. It contains a basic overview
+of what it is, as well as explantions of all the objects. This can be thought of as a reference to all the examples using it. So lets get started.<br><br>
+<br><br>
+<b><u>Basic Information</u></b><br><br>
+MasterX SDK, started along time ago when I first got into video games. The first version of I made, wasnt all that great but worked fairly well. I totaly redesigned it from scratch, using the same basic concepts, and then have updated it over time, and now I think it is pretty well evolved. I plan on only making until a 2.0 , and then a new different library will be produced. Its going to be a joint effort between  one of my friends.  <br><br>
+<br><br><b><u>MasterX SDK Downloads</b></u><br><br>
+<a href="http://www.planetsourcecode.com/xq/ASP/txtCodeId.1531/lngWId.3/qx/vb/scripts/ShowCode.htm">MasterX SDK 1.6</a><br><br>
+<a href="http://www.planetsourcecode.com/vb/scripts/includes/TranslateFormVarsToURLString.asp?txtURL=/vb/scripts/BrowseCategoryOrSearchResults.asp"> MasterX SDK 1.5 </a>
+<br><br>
+<a href="http://www.planetsourcecode.com/vb/scripts/includes/TranslateFormVarsToURLString.asp?txtURL=/vb/scripts/BrowseCategoryOrSearchResults.asp"> All Releated Articles </a><BR><BR> 
+<b>Examples</b><br><br>
+MasterX SDK Featured Examples<br><br>
+<a href="http://www.planetsourcecode.com/xq/ASP/txtCodeId.1510/lngWId.3/qx/vb/scripts/ShowCode.htm">MasterRPG ALPHA 1</a><br>
+<a href="http://www.planetsourcecode.com/xq/ASP/txtCodeId.1510/lngWId.3/qx/vb/scripts/ShowCode.htm">Game Skeleton</a><br>
+<a href="http://www.planetsourcecode.com/xq/ASP/txtCodeId.1507/lngWId.3/qx/vb/scripts/ShowCode.htm"> MasterSocket </a><br>
+<br><br> <b><u>Explanation of the objects </b></u><br><br>
+<br><br>
+<font color="green">MasterXHWND</font><br><br>
+<u>Idea</u><br>
+The idea of this object is to give one interface for all the main functions. It kind of can be compared to like a window, except instead of manaing multiple windows, you use screens. You can set the screen, and then dependent on what screen it is, sent the input and drawing, and logical updates and split them into sections. Each section can respresent a certin screen of data. Like the introduction screen, the game screen, and or anything screen you desire. The object contains many methods, which can be used to preform many tasks text related tasks such as printing text, switching fonts, colors, and more.
+<br><br>
+<font color="green"> MasterScreen</font><br><br>
+MasterScren is the class that contains the DirectX COM object, as well as the front and back surface. It can be accessed at anytime inside the MasterXHWND class, the instance of the class is the object scr.
+<br><br>
+<font color="green"> MasterText</font><br><br>
+The MasterText class, is used in the MasterXHWND object,
+but can be attached in anything that can point to the MasterXHWND object.
+It contains many important text functions, it is accessed through the object text
+in the MasterXHWND object.<br><br>
+<font color="green"> Paint </font><br><br>
+The MasterPaint class, is used in the MasterXHWND object,
+but can be attached in anything that can point to the MasterXHWND object.
+It contains many paint functions, suching as drawing circles, arcs, and more. <br><br><font color="green">Master Sound</font><br><br>
+MasterSound is a class, that can be placed anywere. It can be initilized
+by passing it a pointer to a instance of the MasterXHWND class. It plays embed wave resources. Load through the MasterXHWND method <font color="green">LoadSound</font><br><br>
+<font color="green"> MasterGraphic</font><br><br><br>
+MasterGraphic is a class, that can be placed anywere. It can be initlized by passing
+it a pointer to a instance of the MasterXHWND class. This can be done through the MasterXHWND object method <font color="green">LoadGraphic</font><br><br>
+<font color="green">ScreenObject</font><br><br>
+This is the class you can use to inhert in your classes. In contains the nessicary information to be passed a pointer to the MasterXHWND class, and be able to setup subscreens. So basicly screens within your screens, and can be placed off somewere else.<br><br>
+<font color="green">MasterSocket</font><br><br>
+MasterSocket is the class that contains all the information for connecting 2 computers together. It lets you open up a socket, send data back and forth, and then close the socket. 
+<BR><BR>
+ <br>
+written by jared bruni<br><br>
+because I love to program
+</font>
+</body>
+<HTML>

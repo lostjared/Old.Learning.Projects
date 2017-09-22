@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<title>Creating a font to use wtih SDL</title>
+<meta name="GENERATOR" content="WinCHM">
+<meta http-equiv="Content-Type" content="text/html; charset= Windows-1252">
+
+</head>
+
+<body>
+<P><FONT face=Verdana size=2>Creating a font is simple. 
+Simply download the archives from <A 
+href="http://planetsourcecode.com">http://planetsourcecode.com</A> , or <A 
+href="http://lostsidedead.com/mxsdl">http://lostsidedead.com/mxsdl</A><BR>or the 
+binary setup application to install a already compiled editor into your Program 
+files from <A 
+href="http://lostsidedead.com/mxsdl/setup.exe">http://lostsidedead.com/mxsdl/setup.exe</A><BR>Then 
+Open the application</FONT></P>
+<P>You should see the following:<BR><BR><IMG 
+src="mxfont_img2.jpg">    </P>
+<P>&nbsp;</P>
+<P><FONT face=Verdana size=2>Now heres 
+the fun part. To *RiP* a windows font click the Edit-&gt;Convert Font in the 
+menu and you should see a dialog alot like the following.</FONT></P>
+<P><FONT face=Verdana size=2><IMG 
+src="font_selector.jpg"><BR>select the font and the size, dont worry if it 
+dosent seem to fit into the paint window the drawing algorithm will automaticly 
+size the font to the display window. The Next Dialog that comes up is the 
+following:<BR><IMG src="create_font.jpg"><BR><BR>This dialog is pretty self 
+explaintory. Just click "Create" and it will scan through all the characters, 
+and convert them to the 
+MXF format. It does this using a Simple GDI Trick that i 
+figured out one night when I was bored. Im sure microsoft will fix it in future versions 
+of windows. You can see it scan through the characters it goes really fast on my 
+3.4 GHZ p4</FONT> Next you will see the font displayed in the draw 
+window. Selec tthe pencil , eraser, fill tools to change the font as you see 
+fit.<BR><BR><IMG src="drawn_font.jpg"><BR><BR>Next all you gotta do is save it 
+than by clicking File-&gt;Save As</P>
+<P><FONT face=Arial>Be Sure to Check out the About Dialog and Visit <A 
+href="http://lostsidedead.com">http://lostsidedead.com</A> for more freeware and source 
+code.<BR><IMG src="about_dialog.jpg"> <BR><BR>Now the Tricky part is using the font, 
+Its actually quite easy. All you gotta do is create a instance of SDL_Font with 
+pure SDL or mxFont with mxSDL than with pure SDL call SDL_read_font&nbsp; or 
+with mxSDL call read_font or simply use the C++ wrapper class mxText with mxSDL 
+or SDL_Text with pure SDL.</FONT></P>
+<P><FONT face=Arial>more on this later</FONT></P>
+<P><FONT face=Arial>-Jared Bruni     
+ <BR></P></FONT></body>
+</html>

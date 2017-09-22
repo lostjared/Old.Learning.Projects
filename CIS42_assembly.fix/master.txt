@@ -1,0 +1,5 @@
+; source file 1.0
+; test
+
+mov ax,bx ; test
+mov ax,yx

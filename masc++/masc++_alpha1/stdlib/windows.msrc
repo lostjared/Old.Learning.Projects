@@ -1,0 +1,26 @@
+mas window {
+
+var { 
+	  var$ cls_name = ""; var$ win_title = ""; var& win_x = 0; var& win_y = 0; var& win_w = 640; var& win_h = 480;
+	  var& mouse_x = 0, var& mouse_y = 0, var& key = 0;
+ }
+
+begin {}
+
+end {}
+
+extern proc create;
+extern proc loop;
+extern proc msgbox;
+extern proc waitmsg;
+extern proc trans;
+extern proc disp;
+extern proc drawtext;
+extern proc redraw;
+implement proc key_press;
+implement proc paint;
+implement proc mousedown;
+implement proc mouseup;
+implement proc mousemove;
+
+}

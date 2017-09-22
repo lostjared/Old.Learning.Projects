@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "browser", "browser\browser.vcproj", "{FAD6E73F-DC0A-40AA-8B3E-85B948AFD891}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{FAD6E73F-DC0A-40AA-8B3E-85B948AFD891}.Debug.ActiveCfg = Debug|Win32
+		{FAD6E73F-DC0A-40AA-8B3E-85B948AFD891}.Debug.Build.0 = Debug|Win32
+		{FAD6E73F-DC0A-40AA-8B3E-85B948AFD891}.Release.ActiveCfg = Release|Win32
+		{FAD6E73F-DC0A-40AA-8B3E-85B948AFD891}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

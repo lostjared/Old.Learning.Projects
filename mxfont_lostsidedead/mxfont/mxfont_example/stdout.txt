@@ -1,0 +1,3 @@
+SDL Surface Created a94740
+Successfully initalized
+Quit called!
