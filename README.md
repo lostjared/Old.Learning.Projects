@@ -1,5 +1,7 @@
 # Old Learning Projects: A Journey Through Programming
 
+For an archive of these projects in the original individual zip form can be found on my website: https://lostsidedead.biz/software/
+
 Welcome to my collection of Old Learning Projects. This repository serves as a digital scrapbook, chronicling the various projects I undertook to master C++ throughout different stages of my life. Each project encapsulates a moment in time, reflecting the errors and experiments that paved my way through the complexities of programming.
 
 Originally, many of these projects found their home on Planet Source Code (PSC) as I navigated my early days of coding. However, as I evolved and began crafting projects for my personal website, I decided to remove them from PSC. Now, gathered here, they stand as milestones of my learning journey—each mistake, a lesson; every line of code, a step towards growth.
